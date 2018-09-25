@@ -34,16 +34,11 @@
             <header id="header" class="hoc clear"> 
                 <!-- ################################################################################################ -->
                 <div id="logo" class="fl_left">
-                    <h1><a href="index.html">Kelaby</a></h1>
-                    <p>Sed imperdiet lectus</p>
+                    <h1><a href="index.html">Caritas</a></h1>
+                    <p>Arquidiocesana de Diamantina</p>
                 </div>
                 <div id="quickinfo" class="fl_right">
-                    <ul class="nospace inline">
-                        <li><strong>Rhoncus:</strong><br>
-                            +00 (123) 456 7890</li>
-                        <li><strong>Sagittis:</strong><br>
-                            +00 (123) 456 7890</li>
-                    </ul>
+                    
                 </div>
                 <!-- ################################################################################################ -->
             </header>
@@ -56,26 +51,11 @@
                 <!-- ################################################################################################ -->
                 <ul class="clear">
                     <li class="active"><a href="index.html">Home</a></li>
-                    <li><a class="drop" href="#">Pages</a>
+                    <li><a href="#">Quem Somos</a></li>
+                    <li><a class="drop" href="#">Projetos</a>
                         <ul>
-                            <li><a href="pages/gallery.html">Gallery</a></li>
-                            <li><a href="pages/full-width.html">Full Width</a></li>
-                            <li><a href="pages/sidebar-left.html">Sidebar Left</a></li>
-                            <li><a href="pages/sidebar-right.html">Sidebar Right</a></li>
-                            <li><a href="pages/basic-grid.html">Basic Grid</a></li>
-                        </ul>
-                    </li>
-                    <li><a class="drop" href="#">Dropdown</a>
-                        <ul>
-                            <li><a href="#">Level 2</a></li>
-                            <li><a class="drop" href="#">Level 2 + Drop</a>
-                                <ul>
-                                    <li><a href="#">Level 3</a></li>
-                                    <li><a href="#">Level 3</a></li>
-                                    <li><a href="#">Level 3</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="#">Level 2</a></li>
+                            <li><a href="#">Casa do Cirineu</a></li>
+                            <li><a href="#">Rede das Margaridas</a></li>
                         </ul>
                     </li>
                     <li><a href="#">Link Text</a></li>
