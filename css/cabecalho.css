@@ -1,0 +1,18 @@
+
+div#cabecalho *:hover{
+    text-decoration: none;
+}
+
+div#teste *{
+    transition: 1s;
+}
+
+div#teste a{
+    padding: 5px;
+}
+
+div#teste li:hover *{
+    background: white;
+    color: black;
+    opacity: 0.8;
+}
