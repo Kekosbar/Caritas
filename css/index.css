@@ -2,3 +2,21 @@
 div#carouselExampleControls img{
     height: 500px;
 }
+
+div#titulo{
+    border-bottom: 4px solid black;
+    color: black;
+    opacity: 0.8;
+    font-size: 32px;
+    font-weight: bold;
+    width: 1000px;
+    padding: 10px;
+}
+
+div.noticia{
+    color: black;
+}
+
+div.noticia:hover{
+    box-shadow: 4px 5px 10px 4px black;
+}
