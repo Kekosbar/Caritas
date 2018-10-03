@@ -1,0 +1,15 @@
+body{
+    background-color: #e7f5c0
+}
+
+div#formulario{
+    background-color: #0b0c0a;
+     margin: auto;
+     margin-top: 50px;
+    width: 60%;
+    border: 3px solid black;
+    padding-left: 80px;
+    padding-right: 80px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}

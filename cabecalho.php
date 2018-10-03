@@ -12,7 +12,7 @@
                 <ul>
                     <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
                     <li><a href="#">Login</a></li>
-                    <li><a href="#">Cadastro</a></li>
+                    <li><a href="cadastro.php">Cadastro</a></li>
                 </ul>
             </div>
         </div>
@@ -39,7 +39,7 @@
         <nav id="mainav" class="hoc clear"> 
             <!-- ################################################################################################ -->
             <ul class="clear">
-                <li class="active"><a href="index.html">Home</a></li>
+                <li class="active"><a href="index.php">Home</a></li>
                 <li><a href="#">Quem Somos</a></li>
                 <li><a class="drop" href="#">Projetos</a>
                     <ul>
