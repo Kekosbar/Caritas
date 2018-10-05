@@ -1,0 +1,22 @@
+body{
+    background-color: #f1f0e3;
+    color: black;
+}
+
+article h1{
+    font-weight: bold;
+    font-size: 25pt;
+    font-family: inherit
+}
+
+section{
+    margin-top: -40px;
+    margin-bottom: -50px;
+}
+
+img#noticia{
+    max-width: 600px;
+    max-height: 400px;
+    min-width: 600px;
+    min-height: 400px;
+}

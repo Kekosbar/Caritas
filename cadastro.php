@@ -147,18 +147,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
                 <button class="btn btn-primary btn-lg btn-block" type="submit" name="submit">Cadastrar</button>
             </form>
-            <?php
-                
-                echo "$firstName <br>";
-                echo "$email <br>";
-                echo "$NomeCompleto <br>";
-                echo "$estado <br>";
-                echo "$cidade <br>";
-                echo "$address <br>";
-                echo "$senha <br>";
-                echo "$confsenha <br>";
-                echo ''+$_POST["firstName"];
-                ?>
+            
         </div>
     </body>
 
