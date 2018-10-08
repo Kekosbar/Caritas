@@ -3,6 +3,10 @@ body{
     color: black;
 }
 
+article{
+    width: 80%;
+}
+
 article h1{
     font-weight: bold;
     font-size: 25pt;

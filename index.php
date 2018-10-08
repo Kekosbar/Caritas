@@ -4,12 +4,15 @@
     <head>
         <meta charset="UTF-8">
         <title>Caritas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
         
         <?php include './HTMLS/links.html';?>
         
         <!-- LINK DESTE ARQUIVO SOMENTE -->
         <link href="css/index.css" rel="stylesheet" type="text/css">
         <link href="css/album.css" rel="stylesheet">
+        <link href="css/carrosel.css" rel="stylesheet">
         
     </head>
     <body>
@@ -23,21 +26,21 @@
                 <div class="carousel-item active">
                     <img class="d-block w-100" src="img/img.jpg" alt="First slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Titulo 1</h5>
+                        <h1>Titulo 1</h1>
                         <p>Mensagem para o primeiro titulo</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="img/img2.jpg" alt="Second slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Titulo 2</h5>
+                        <h1>Titulo 2</h1>
                         <p>Mensagem para o segundo titulo</p>
                     </div>
                 </div>
                 <div class="carousel-item">
                     <img class="d-block w-100" src="img/img3.jpg" alt="Third slide">
                     <div class="carousel-caption d-none d-md-block">
-                        <h5>Titulo 3</h5>
+                        <h1>Titulo 3</h1>
                         <p>Mensagem para o terceiro titulo</p>
                     </div>
                 </div>
@@ -106,6 +109,57 @@
                 </div>
             </div>
         </div>
+        
+        
+        
+        
+        
+        
+        
+        <!-- START THE FEATURETTES -->
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">First featurette heading. <span class="text-muted">It'll blow your mind.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5">
+              <img class="featurette-image img-fluid mx-auto" src="img/imgExemplo.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7 order-md-2">
+            <h2 class="featurette-heading">Oh yeah, it's that good. <span class="text-muted">See for yourself.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5 order-md-1">
+            <img class="featurette-image img-fluid mx-auto" src="img/imgExemplo.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+
+        <div class="row featurette">
+          <div class="col-md-7">
+            <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
+            <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+          </div>
+          <div class="col-md-5">
+            <img class="featurette-image img-fluid mx-auto" src="img/imgExemplo.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
+          </div>
+        </div>
+
+        <hr class="featurette-divider">
+        
+        
+        
+        
+        
         
         <!-- INDEFINIDO POR ENQUANTO
         =========================================================================================-->
