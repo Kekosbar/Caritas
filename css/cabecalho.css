@@ -13,8 +13,34 @@ div#teste li:hover *{
     opacity: 0.8;
 }
 /*  CABEÇALHO MENU  */
-DIV#cabecalhoMenu{
+#cabecalhoMenu{
     z-index: 2;
+}
+
+#cabecalhoMenu {
+    box-shadow: 1px 0px 10px 2px black;;
+}
+
+#cabecalhoMenu nav{
+    padding: 0;
+}
+
+#cabecalhoMenu li{
+    padding: 5px;
+}
+
+#cabecalhoMenu a#linkDoMenu{
+    padding: 10px;
+}
+
+#cabecalhoMenu li:hover{
+    border-bottom: solid #004085 2px;
+    padding: 3px;
+    color: #005cbf;
+}
+
+#cabecalhoMenu li:hover a#linkTopo{
+    color: #005cbf;
 }
 
 /* Style the header */

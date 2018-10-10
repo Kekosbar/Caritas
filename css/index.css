@@ -11,13 +11,17 @@ div#carouselExampleControls img{
     height: 500px;
 }
 
+div#painelNoticias{
+    color: black;
+}
+
 div#titulo{
     border-bottom: 4px solid black;
     color: black;
     opacity: 0.8;
     font-size: 32px;
     font-weight: bold;
-    width: 1000px;
+    width: 80%;
     padding: 10px;
 }
 

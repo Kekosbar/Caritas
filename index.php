@@ -58,7 +58,7 @@
         <!-- NOTICIAS
         =========================================================================================-->
 
-        <div class="album py-5 bg-light">
+        <div class="album py-5 bg-light" id="painelNoticias">
             <center>
             <div id="titulo">
                 <span>Notícias</span>

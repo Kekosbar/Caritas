@@ -2,6 +2,7 @@
     <head>
         <meta charset="UTF-8">
         <title>Caritas</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         
         <?php include './HTMLS/links.html';?>
         <link href="css/noticia.css" rel="stylesheet" type="text/css"/>
@@ -15,7 +16,7 @@
             <center>
             <h1>Titulo da matéria que será divulgda</h1>
             
-            <img id="noticia" src="img/img2.jpg"/>
+            <img id="noticia" class="featurette-image img-fluid mx-auto" src="img/img2.jpg"/>
             </center>
             
             <br>
