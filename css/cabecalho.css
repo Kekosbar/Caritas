@@ -12,6 +12,12 @@ div#teste li:hover *{
     color: black;
     opacity: 0.8;
 }
+
+img#logoCaritas{
+    display: block;
+    float: left;
+}
+
 /*  CABEÇALHO MENU  */
 #cabecalhoMenu{
     z-index: 2;
@@ -41,6 +47,19 @@ div#teste li:hover *{
 
 #cabecalhoMenu li:hover a#linkTopo{
     color: #005cbf;
+}
+
+#cabecalhoMenu li#doeaqui{
+    background-color: #1C7AA8;
+}
+
+#cabecalhoMenu li#doeaqui a{
+    color: white;
+}
+
+#cabecalhoMenu li#doeaqui a:hover{
+    color: black;
+    background-color: white;
 }
 
 /* Style the header */

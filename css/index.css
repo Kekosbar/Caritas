@@ -1,3 +1,4 @@
+
 DIV#carouselExampleControls P{
     font-size: 18pt;
     font-weight: bold;
@@ -8,11 +9,12 @@ DIV#carouselExampleControls h1{
 }
 
 div#carouselExampleControls img{
-    height: 500px;
+    height: 600px;
 }
 
 div#painelNoticias{
     color: black;
+    background-color: white;
 }
 
 div#titulo{
@@ -25,10 +27,25 @@ div#titulo{
     padding: 10px;
 }
 
-div.noticia{
-    color: black;
+div.noticia div#interna{
+    border: solid 1px black;
 }
 
-div.noticia:hover{
-    box-shadow: 4px 5px 10px 4px black;
+div.noticia a{
+    color: black;
+    text-decoration: none;
+}
+
+div.noticia:hover div#interna{
+    box-shadow: 4px 5px 10px 1px black;
+}
+
+.alinharCent {
+display: block;
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+background-color: #ffffff;
+min-width: 80%;
+border: 1px solid black;
 }

@@ -23,6 +23,7 @@
         <header id="header" class="hoc clear"> 
             <!-- ################################################################################################ -->
             <div id="logo" class="fl_left">
+                <img id="logoCaritas" src="img/logoCaritas.png"/>
                 <h1><a href="index.html">Caritas</a></h1>
                 <p>Arquidiocesana de Diamantina</p>
             </div>
@@ -60,7 +61,7 @@
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a id="linkTopo" class="nav-link" href="#">Documentação</a>
+                    <a id="linkTopo" class="nav-link" href="#">Biblioteca</a>
                 </li>
                 <li class="nav-item active">
                     <a id="linkTopo" class="nav-link" href="#">Link</a>
@@ -76,13 +77,13 @@
                         <a class="dropdown-item" href="#">DPE</a>
                     </div>
                 </li>
-                <li class="nav-item active">
-                    <a class="nav-link" href="#">Doação</a>
+                <li id="doeaqui" class="nav-item active">
+                    <a class="nav-link" href="#">Colabore</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
             </form>
         </div>
     </nav>
