@@ -20,18 +20,9 @@
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <div class="wrapper row1">
-        <header id="header" class="hoc clear"> 
-            <!-- ################################################################################################ -->
-            <div id="logo" class="fl_left">
-                <img id="logoCaritas" src="img/logoCaritas.png"/>
-                <h1><a href="index.html">Caritas</a></h1>
-                <p>Arquidiocesana de Diamantina</p>
-            </div>
-            <div id="quickinfo" class="fl_right">
-
-            </div>
-            <!-- ################################################################################################ -->
-        </header>
+        <div>
+            <img src="img/caritasFundo.jpg"/>
+        </div>
     </div>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
@@ -58,6 +49,9 @@
                     <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="#">Casa do Cirineu</a>
                         <a class="dropdown-item" href="#">Rede das Margaridas</a>
+                        <a class="dropdown-item" href="#">Economia Popular Solidárioa - EPS</a>
+                        <a class="dropdown-item" href="#">Programa Infância Adolecencia e Juventude</a>
+                        <a class="dropdown-item" href="#">Fortalecimento da Rede Cáritas</a>
                     </div>
                 </li>
                 <li class="nav-item active">
