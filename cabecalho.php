@@ -4,8 +4,8 @@
             <!-- ################################################################################################ -->
             <div class="fl_left">
                 <ul>
-                    <li><i class="fa fa-phone"></i> +00 (123) 456 7890</li>
-                    <li><i class="fa fa-envelope-o"></i> info@domain.com</li>
+                    <li><i class="fa fa-phone"></i><b> (38) 3531-3583</b></li>
+                    <li><i class="fa fa-envelope-o"></i><b> caritasarquidiamantina@yahoo.com.br</b></li>
                 </ul>
             </div>
             <div id="teste" class="fl_right">

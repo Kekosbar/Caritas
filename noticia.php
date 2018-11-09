@@ -15,7 +15,11 @@
             <article>
             <center>
             <h1>Titulo da matéria que será divulgda</h1>
+            </center>
+            <h3>Uma breve mensagem sobre a matéria que será divulgada</h3>
             
+            <span><b>18 de outubro de 2018</b></span>
+            <center>
             <img id="noticia" class="featurette-image img-fluid mx-auto" src="img/img2.jpg"/>
             </center>
             
