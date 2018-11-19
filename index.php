@@ -72,62 +72,111 @@
         <!-- NOTICIAS
         =========================================================================================-->
 
-        <div class="album py-5 bg-light" id="painelNoticias">
+        <div class="album py-5" id="painelNoticias" style="background-color: #cbcbcb">
             <center>
             <div id="titulo">
                 <span>Notícias</span>
             </div>
             </center>
-            <div class="container">
+            
+            <div class="center" style="background-color: #eaeaea; padding-bottom: 20px">
+                <figure class="noticiaPrincipal">
+                    <a href="#">
+                        <img src="img/igreja.jpg" style="width: 800px;">
+                        <figcaption>
+                            <span class="legenda">Diamantina</span><br>
+                            Titulo a ser colocada na noticia principal do site
+                        </figcaption>
+                    </a>
+                </figure>
 
-                <div class="row">
-                    <div class="col-md-4 noticia">
-                        <a href="noticia1.php">
-                            <div class="card mb-4" id="interna">
-                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="img/noticias/IMG-20180506-WA0006.jpg" data-holder-rendered="true">
-                            <div class="card-body">
-                                <p class="card-text">A Feira de Economia Solidária ocorreu neste sábado, 15/09/2018, na praça do mercado velho</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
+                <div style="display: inline-block; padding: 20px; width: 400px; vertical-align: central">
+                <form style="padding: 30px; background-color: #fe3333; color: white;">
+                    Cadastre o seu email e receba as mais novas notícias sobre a Cáritas
+                    <div class="form-group">
+                        <label for="exampleInputEmail1" style="font-weight: bold; text-align: left">Nome</label>
+                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome completo">
+                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
                     </div>
-                    <div class="col-md-4 noticia">
-                        <a href="noticia2.php">
-                        <div class="card mb-4 noticia" id="interna">
-                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="img/noticias/casaDoce.JPG" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                            <div class="card-body">
-                                <p class="card-text">Exemplo de notícia, Casa do Doce.....</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
-                                </div>
-                            </div>
-                        </div>
-                        </a>
+                    <div class="form-group">
+                        <label for="exampleInputPassword1" style="font-weight: bold; text-align: left">Email</label>
+                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="exemplo@email.com">
                     </div>
-                    <div class="col-md-4 noticia">
-                        <a href="noticia.php">
-                        <div class="card mb-4 noticia" id="interna">
-                            <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22208%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20208%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1662fc57502%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A11pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1662fc57502%22%3E%3Crect%20width%3D%22208%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2266.953125%22%20y%3D%22117.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                            <div class="card-body">
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <div class="d-flex justify-content-between align-items-center">
-                                    <small class="text-muted">9 mins</small>
+                    <br>
+                    <button type="submit" class="btn btn-primary">Cadastrar</button>
+                </form>
+                </div>
+            </div>
+            <!-- =================================================================================================================-->
+            <div class="center" style="border-top: solid #a70202 4px; padding-top: 20px; background-color: #cbcbcb; width: 100%;  padding-bottom: 20px">
+                <figure class="noticiaPrincipal">
+                    <a href="#">
+                        <img src="img/img.jpg" style="width: 500px; height: 350px">
+                        <figcaption style="font-size: 22pt;">
+                            <span class="legenda">Diamantina</span><br>
+                            Titulo a ser colocada na noticia principal do site
+                        </figcaption>
+                    </a>
+                </figure>
+                
+                <figure class="noticiaPrincipal">
+                    <a href="#">
+                        <img src="img/img3.jpg" style="width: 500px; height: 350px">
+                        <figcaption style="font-size: 22pt;">
+                            <span class="legenda">Diamantina</span><br>
+                            Titulo a ser colocada na noticia principal do site
+                        </figcaption>
+                    </a>
+                </figure>
+            </div>
+            <!-- =================================================================================================================-->
+            <div style="background-color: #eaeaea; border-top: solid green 4px; ">
+                <div class="container" style="padding-top: 20px; ">
+
+                    <div class="row">
+                        <div class="col-md-4 noticia">
+                            <a href="noticia1.php">
+                                <div class="card mb-4" id="interna">
+                                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="img/noticias/IMG-20180506-WA0006.jpg" data-holder-rendered="true">
+                                <div class="card-body tituloNot">
+                                    <p class="card-text">A Feira de Economia Solidária ocorreu neste sábado, 15/09/2018, na praça do mercado velho</p>
+                                    <div class="d-flex justify-content-between align-items-center" style="bottom: 0; position: absolute; font-weight: bolder; font-size: 12pt">
+                                        <small class="text-muted">12/22/2018</small>
+                                    </div>
                                 </div>
                             </div>
+                            </a>
                         </div>
-                        </a>
+                        <div class="col-md-4 noticia">
+                            <a href="noticia2.php">
+                            <div class="card mb-4 noticia" id="interna">
+                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="img/noticias/casaDoce.JPG" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                                <div class="card-body tituloNot">
+                                    <p class="card-text">Exemplo de notícia, Casa do Doce.....</p>
+                                    <div class="d-flex justify-content-between align-items-center" style="bottom: 0; position: absolute; font-weight: bolder; font-size: 12pt">
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="col-md-4 noticia">
+                            <a href="noticia.php">
+                            <div class="card mb-4 noticia" id="interna">
+                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22208%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20208%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1662fc57502%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A11pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1662fc57502%22%3E%3Crect%20width%3D%22208%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2266.953125%22%20y%3D%22117.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
+                                <div class="card-body tituloNot">
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                                    <div class="d-flex justify-content-between align-items-center" style="bottom: 0; position: absolute; font-weight: bolder; font-size: 12pt">
+                                        <small class="text-muted">9 mins</small>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        
-        
-        
-        
         
         
         <!-- START THE FEATURETTES -->
@@ -170,6 +219,17 @@
 
         <hr class="featurette-divider">
         
+        
+        <div class="center">
+            <figure id="container">
+                <img src="img/fundoArvore.jpg" />  
+                <figcaption>Colabore com a Cáritas e vem fazer parte da construção de um novo dia
+                    <center>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="doeAgora">Doe Agora</button>
+                    </center>
+                </figcaption>
+            </figure>
+        </div>
         
         
         
