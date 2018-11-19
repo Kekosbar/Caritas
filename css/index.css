@@ -12,9 +12,36 @@ div#carouselExampleControls img{
     height: 600px;
 }
 
+/*  NOTICIA
+===============================*/
+
 div#painelNoticias{
     color: black;
     background-color: white;
+}
+
+figure.noticiaPrincipal{
+    display: inline-table;
+    position: relative;
+}
+
+figure.noticiaPrincipal figcaption{
+    position: absolute;
+    bottom: 10px;
+    padding: 10px;
+    line-height: 35px;
+    font-size: 32pt;
+    font-weight: bolder;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    text-shadow: 0px 0px 5px black;
+    text-align: left;
+}
+
+span.legenda{
+    border-bottom: solid green 2px; 
+    font-size: 14pt;  
+    color: #efefef
 }
 
 div#titulo{
@@ -23,7 +50,6 @@ div#titulo{
     opacity: 0.8;
     font-size: 32px;
     font-weight: bold;
-    width: 80%;
     padding: 10px;
 }
 
@@ -38,6 +64,10 @@ div.noticia a{
 
 div.noticia:hover div#interna{
     box-shadow: 4px 5px 10px 1px black;
+}
+
+div.noticia .tituloNot{
+    height: 150px;
 }
 
 .alinharCent {
@@ -62,4 +92,30 @@ border: 1px solid black;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+/*      DIV COLABORE
+=====================================*/
+
+#container {
+  display: inline-block;
+  position: relative;
+}
+
+#container figcaption {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  right: 10%;
+  font-size: 30pt;
+  color: #e4e4e4;
+  text-shadow: 0px 0px 5px black;
+}
+
+button#doeAgora{
+    width: 25%; 
+    margin-top: 25%; 
+    font-size: 30pt;
+    font-family: "Times New Roman", Times, serif;
+
 }
