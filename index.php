@@ -7,7 +7,21 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         
-        <?php include './HTMLS/links.html';?>
+        <!-- LINKS DE BOOTSTRAP -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" 
+              integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <script src="bootstrap/js/bootstrap.min.js" 
+        integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+        <script src="bootstrap/js/bootstrap.js"></script>
+        <!-- SCRIPTS BOOTSTRAP -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+        <!-- LINKS GLOBAL -->
+        <link href="modelos/kelaby/layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+        <link href="css/cabecalho.css" rel="stylesheet" type="text/css">
+        <link href="css/rodape.css" rel="stylesheet" type="text/css">
         
         <!-- LINK DESTE ARQUIVO SOMENTE -->
         <link href="css/index.css" rel="stylesheet" type="text/css">
@@ -16,7 +30,95 @@
         
     </head>
     <body>
-        <?php include './cabecalho.php'; ?>
+        <!--==========================================================================================
+        CABEÇALHO
+        ============================================================================================-->
+        
+        <div id="cabecalho">
+            <div class="wrapper row0">
+                <div id="topbar" class="hoc clear"> 
+                    <!-- ################################################################################################ -->
+                    <div class="fl_left">
+                        <ul>
+                            <li><i class="fa fa-phone"></i><b> (38) 3531-3583</b></li>
+                            <li><i class="fa fa-envelope-o"></i><b> caritasarquidiamantina@yahoo.com.br</b></li>
+                        </ul>
+                    </div>
+                    <div id="teste" class="fl_right">
+                        <ul>
+                            <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
+                            <li><a href="pages/login.php">Login</a></li>
+                            <li><a href="pages/cadastro.php">Cadastro</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- ################################################################################################ -->
+            <!-- ################################################################################################ -->
+            <div class="wrapper row1">
+                <div>
+                    <img src="img/caritasFundo.jpg"/>
+                </div>
+            </div>
+            <!-- ################################################################################################ -->
+            <!-- ################################################################################################ -->
+            <!-- ################################################################################################ -->
+            <div id="cabecalhoMenu">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <a id="linkDoMenu" class="navbar-brand" href="#">Menu</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active">
+                            <a id="linkTopo" class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item active">
+                            <a id="linkTopo" class="nav-link" href="pages/quemSomos.php">Quem Somos</a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a id="linkTopo" id="linkTopo" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Projetos
+                            </a>
+                            <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">Casa do Cirineu</a>
+                                <a class="dropdown-item" href="#">Rede das Margaridas</a>
+                                <a class="dropdown-item" href="#">Economia Popular Solidárioa - EPS</a>
+                                <a class="dropdown-item" href="#">Programa Infância Adolecencia e Juventude</a>
+                                <a class="dropdown-item" href="#">Fortalecimento da Rede Cáritas</a>
+                            </div>
+                        </li>
+                        <li class="nav-item active">
+                            <a id="linkTopo" class="nav-link" href="#">Biblioteca</a>
+                        </li>
+                        <li class="nav-item active">
+                            <a id="linkTopo" class="nav-link" href="#">Link</a>
+                        </li>
+                        <li class="nav-item dropdown active">
+                            <a id="linkTopo" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Paroquias
+                            </a>
+                            <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="#">SBJ</a>
+                                <a class="dropdown-item" href="#">SCJ</a>
+                                <a class="dropdown-item" href="#">SAS</a>
+                                <a class="dropdown-item" href="#">DPE</a>
+                            </div>
+                        </li>
+                        <li id="doeaqui" class="nav-item active">
+                            <a class="nav-link" href="#">Colabore</a>
+                        </li>
+                    </ul>
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
+                    </form>
+                </div>
+            </nav>
+            </div>
+        </div>
         
         <!-- CARROSEL DE IMAGENS-->
         <!-- =================================================================================-->
@@ -80,7 +182,7 @@
             </center>
             
             <div class="center" style="background-color: #eaeaea; padding-bottom: 20px">
-                <figure class="noticiaPrincipal">
+                <figure class="noticiaPrincipal" style="display: inline-block; ">
                     <a href="#">
                         <img src="img/igreja.jpg" style="width: 800px;">
                         <figcaption>
@@ -135,7 +237,7 @@
 
                     <div class="row">
                         <div class="col-md-4 noticia">
-                            <a href="noticia1.php">
+                            <a href="pages/noticia1.php">
                                 <div class="card mb-4" id="interna">
                                     <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="img/noticias/IMG-20180506-WA0006.jpg" data-holder-rendered="true">
                                 <div class="card-body tituloNot">
@@ -148,7 +250,7 @@
                             </a>
                         </div>
                         <div class="col-md-4 noticia">
-                            <a href="noticia2.php">
+                            <a href="pages/noticia2.php">
                             <div class="card mb-4 noticia" id="interna">
                                 <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="img/noticias/casaDoce.JPG" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
                                 <div class="card-body tituloNot">
@@ -161,7 +263,7 @@
                             </a>
                         </div>
                         <div class="col-md-4 noticia">
-                            <a href="noticia.php">
+                            <a href="pages/noticia.php">
                             <div class="card mb-4 noticia" id="interna">
                                 <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22208%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20208%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1662fc57502%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A11pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1662fc57502%22%3E%3Crect%20width%3D%22208%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2266.953125%22%20y%3D%22117.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
                                 <div class="card-body tituloNot">
