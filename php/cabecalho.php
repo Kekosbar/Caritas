@@ -11,8 +11,9 @@
             <div id="teste" class="fl_right">
                 <ul>
                     <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
-                    <li><a href="../pages/login.php">Login</a></li>
-                    <li><a href="../pages/cadastro.php">Cadastro</a></li>
+                    <li><a href="/./Caritas/pages/login.php">Login</a></li>
+                    <li><a href="/./Caritas/pages/cadastro.php">Cadastro</a></li>
+                    <li><a href="/./Caritas/pages/admin/">Administrador</a></li>
                 </ul>
             </div>
         </div>
@@ -21,7 +22,7 @@
     <!-- ################################################################################################ -->
     <div class="wrapper row1">
         <div>
-            <img src="../img/caritasFundo.jpg"/>
+            <img src="/./Caritas/img/caritasFundo.jpg"/>
         </div>
     </div>
     <!-- ################################################################################################ -->
@@ -37,10 +38,10 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a id="linkTopo" class="nav-link" href="../index.php">Home<span class="sr-only">(current)</span></a>
+                    <a id="linkTopo" class="nav-link" href="/./Caritas/index.php">Home<span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a id="linkTopo" class="nav-link" href="../pages/quemSomos.php">Quem Somos</a>
+                    <a id="linkTopo" class="nav-link" href="/./Caritas/pages/quemSomos.php">Quem Somos</a>
                 </li>
                 <li class="nav-item dropdown active">
                     <a id="linkTopo" id="linkTopo" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">

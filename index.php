@@ -34,91 +34,7 @@
         CABEÇALHO
         ============================================================================================-->
         
-        <div id="cabecalho">
-            <div class="wrapper row0">
-                <div id="topbar" class="hoc clear"> 
-                    <!-- ################################################################################################ -->
-                    <div class="fl_left">
-                        <ul>
-                            <li><i class="fa fa-phone"></i><b> (38) 3531-3583</b></li>
-                            <li><i class="fa fa-envelope-o"></i><b> caritasarquidiamantina@yahoo.com.br</b></li>
-                        </ul>
-                    </div>
-                    <div id="teste" class="fl_right">
-                        <ul>
-                            <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
-                            <li><a href="pages/login.php">Login</a></li>
-                            <li><a href="pages/cadastro.php">Cadastro</a></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-            <!-- ################################################################################################ -->
-            <!-- ################################################################################################ -->
-            <div class="wrapper row1">
-                <div>
-                    <img src="img/caritasFundo.jpg"/>
-                </div>
-            </div>
-            <!-- ################################################################################################ -->
-            <!-- ################################################################################################ -->
-            <!-- ################################################################################################ -->
-            <div id="cabecalhoMenu">
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a id="linkDoMenu" class="navbar-brand" href="#">Menu</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a id="linkTopo" class="nav-link" href="index.php">Home<span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item active">
-                            <a id="linkTopo" class="nav-link" href="pages/quemSomos.php">Quem Somos</a>
-                        </li>
-                        <li class="nav-item dropdown active">
-                            <a id="linkTopo" id="linkTopo" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Projetos
-                            </a>
-                            <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">Casa do Cirineu</a>
-                                <a class="dropdown-item" href="#">Rede das Margaridas</a>
-                                <a class="dropdown-item" href="#">Economia Popular Solidárioa - EPS</a>
-                                <a class="dropdown-item" href="#">Programa Infância Adolecencia e Juventude</a>
-                                <a class="dropdown-item" href="#">Fortalecimento da Rede Cáritas</a>
-                            </div>
-                        </li>
-                        <li class="nav-item active">
-                            <a id="linkTopo" class="nav-link" href="#">Biblioteca</a>
-                        </li>
-                        <li class="nav-item active">
-                            <a id="linkTopo" class="nav-link" href="#">Link</a>
-                        </li>
-                        <li class="nav-item dropdown active">
-                            <a id="linkTopo" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Paroquias
-                            </a>
-                            <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="#">SBJ</a>
-                                <a class="dropdown-item" href="#">SCJ</a>
-                                <a class="dropdown-item" href="#">SAS</a>
-                                <a class="dropdown-item" href="#">DPE</a>
-                            </div>
-                        </li>
-                        <li id="doeaqui" class="nav-item active">
-                            <a class="nav-link" href="#">Colabore</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
-                    </form>
-                </div>
-            </nav>
-            </div>
-        </div>
+        <?php include './php/cabecalho.php'; ?>
         
         <!-- CARROSEL DE IMAGENS-->
         <!-- =================================================================================-->
@@ -174,6 +90,10 @@
         <!-- NOTICIAS
         =========================================================================================-->
 
+        <?php
+            require_once './php/classes/BDconnect.php';
+            $bd = new BDconnect();
+        ?>
         <div class="album py-5" id="painelNoticias" style="background-color: #cbcbcb">
             <center>
             <div id="titulo">
@@ -182,12 +102,23 @@
             </center>
             
             <div class="center" style="background-color: #eaeaea; padding-bottom: 20px">
+                <?php 
+                    $result = $bd->getNoticias(1);
+                    if($result != null){
+                        $row = $result->fetch_assoc();
+                        $id = $row["id"];
+                        $titulo = $row["titulo"];
+                        $foto = $row["foto"];
+                        $data = $row["data"];
+                        $local = $row["local"];
+                    }
+                ?>
                 <figure class="noticiaPrincipal" style="display: inline-block; ">
-                    <a href="#">
-                        <img src="img/igreja.jpg" style="width: 800px;">
+                    <a href="<?php echo 'pages/noticia.php?idNoticia='.$id;?>">
+                        <img src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>" style="width: 800px;">
                         <figcaption>
-                            <span class="legenda">Diamantina</span><br>
-                            Titulo a ser colocada na noticia principal do site
+                            <span class="legenda"><?php if($result != null) echo $local; ?></span><br>
+                            <?php if($result != null) echo $titulo; ?>
                         </figcaption>
                     </a>
                 </figure>
@@ -210,23 +141,42 @@
                 </div>
             </div>
             <!-- =================================================================================================================-->
+            <?php 
+                $result = $bd->getNoticias(2);
+                if ($result != null) {
+                    $row = $result->fetch_assoc();
+                    $id = $row["id"];
+                    $titulo = $row["titulo"];
+                    $foto = $row["foto"];
+                    $data = $row["data"];
+                    $local = $row["local"];
+                }
+            ?>
             <div class="center" style="border-top: solid #a70202 4px; padding-top: 20px; background-color: #cbcbcb; width: 100%;  padding-bottom: 20px">
                 <figure class="noticiaPrincipal">
-                    <a href="#">
-                        <img src="img/img.jpg" style="width: 500px; height: 350px">
+                    <a href="<?php echo 'pages/noticia.php?idNoticia='.$id;?>">
+                        <img src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>" style="width: 580px; height: 400px">
                         <figcaption style="font-size: 22pt;">
-                            <span class="legenda">Diamantina</span><br>
-                            Titulo a ser colocada na noticia principal do site
+                            <span class="legenda"><?php if($result != null) echo $local;?></span><br>
+                            <?php if($result != null) echo $titulo;?>
                         </figcaption>
                     </a>
                 </figure>
-                
+                <?php
+                    if($row = $result->fetch_assoc()){
+                        $id = $row["id"];
+                        $titulo = $row["titulo"];
+                        $foto = $row["foto"];
+                        $data = $row["data"];
+                        $local = $row["local"];
+                    }
+                ?>
                 <figure class="noticiaPrincipal">
-                    <a href="#">
-                        <img src="img/img3.jpg" style="width: 500px; height: 350px">
+                    <a href="<?php echo 'pages/noticia.php?idNoticia='.$id;?>">
+                        <img src="<?php if($row != null) echo 'data:image;base64,'.$foto;?>" style="width: 580px; height: 400px">
                         <figcaption style="font-size: 22pt;">
-                            <span class="legenda">Diamantina</span><br>
-                            Titulo a ser colocada na noticia principal do site
+                            <span class="legenda"><?php if($row != null) echo $local;?></span><br>
+                            <?php if($row != null) echo $titulo;?>
                         </figcaption>
                     </a>
                 </figure>

@@ -20,8 +20,49 @@ class BDconnect {
             return false;
     }
     
+    function addNoticia(Noticia $noticia){
+//        $prepare = $this->conn->prepare("INSERT INTO Noticia (titulo, subtitulo, autor, texto, foto, categoria) VALUES (?,?,?,?,?,?)");
+//        $prepare->bind_param("sss", $titulo, $subtitulo, $autor, $texto, $foto, $categoria);
+        $titulo = $noticia->getTitulo();
+        $subtitulo = $noticia->getSubTitulo();
+        $autor = $noticia->getAutor();
+        $texto = $noticia->getTexto();
+        $foto = $noticia->getFoto();
+        $categoria = $noticia->getCategoria();
+        $local = $noticia->getLocal();
+        $query = "INSERT INTO Noticia (titulo, subtitulo, autor, texto, foto, categoria, local) VALUES "
+                . "('$titulo','$subtitulo','$autor','$texto','$foto',$categoria, '$local');";
+        return $this->conn->query($query);
+    }
     
+    function getNoticias($categoria){
+        $query = "SELECT id, titulo, subTitulo, autor, texto, foto, data, categoria, local FROM Noticia WHERE categoria = ".$categoria;
+        $result = $this->conn->query($query);
+        if($result->num_rows > 0){
+            return $result;
+        } else {
+            return null;
+        }
+    }
     
+    function getNoticiaPorID($id){
+        $query = "SELECT id, titulo, subTitulo, autor, texto, foto, data, categoria, local FROM Noticia WHERE id = ".$id;
+        $result = $this->conn->query($query);
+        if($result->num_rows > 0){
+            return $result;
+        } else {
+            return null;
+        }
+    }
+            
+    function finalizar(){
+        $this->conn->close();
+    }
+    
+    function msmErro(){
+        return $this->conn->error;
+    }
+            
     
     function getServername() {
         return $this->servername;

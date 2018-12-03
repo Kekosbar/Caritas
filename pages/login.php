@@ -12,7 +12,7 @@
             if($bd->login($login, $senha)) {
                 //echo "<script>alert('Logado com sucesso');</script>";
                 setcookie("loginCaritas",$login);
-                header('Location: admin/index.html');
+                header('Location: admin/index.php');
                 exit();
             }else
                 echo "<script>alert('Login ou senha inválidos');</script>";
