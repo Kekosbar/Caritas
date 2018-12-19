@@ -4,6 +4,7 @@ include '../../Arquivos/verificaLogin.php';
 $titulo = $subTitulo = $autor = $texto = $categoria = $foto = $substitui = $local = $imagem = "";
 $tituloErr = $subTituloErr = $autorErr = $textoErr = $categoriaErr = $fotoErr = $substituiErr = $localErr = "";
 $textoDiv = "";
+$id;
 
 require_once '../../../../php/classes/BDconnect.php';
 $bd = new BDconnect();
@@ -30,13 +31,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_POST["categoria"])) {$categoriaErr = "ERRO! Selecione uma categoria"; $validade = false;}
     else $categoria = $_POST["categoria"];
     
-    if(empty($_POST["local"])) {$localErr = "ERRO! Insira o local"; $validade = false;}
-    else $local = $_POST["local"];
-    
     if($categoria == 2){
         if(empty($_POST["notSubst"])) {$substituiErr = "ERRO! Selecione a notícia que será substituida"; $validade = false;}
         else $substitui = $_POST["notSubst"];
     }
+    
+    if(empty($_POST["local"])) {$localErr = "ERRO! Insira o local"; $validade = false;}
+    else $local = $_POST["local"];
     
     // Preparar imagem para salvar no BD
     if (getimagesize($_FILES['image']['tmp_name']) == false){
@@ -50,23 +51,44 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         $imagem = $foto;
     }
     
+    $id = $_POST["idNoticia"];
     // Se estiver valido envia para o BD
     if($validade){
+        $result = $bd->getNoticiaPorID($id);
+        $row = $result->fetch_assoc();
+        $categoriaAtual = $row["categoria"];
+        // Troca as categorias
         if ($categoria == 1) {
-//            $substitui = $_COOKIE["idNoticiaPrincipalCaritas"];
             $substitui = $_POST["NoticiaPrin"];
-            $bd->trocaCategoria(3, $substitui);
+            $bd->trocaCategoria($categoriaAtual, $substitui);
         }
         else if ($categoria == 2 && $substitui > 0) {
-            $bd->trocaCategoria(3, $substitui);
+            $bd->trocaCategoria($categoriaAtual, $substitui);
         }
         require_once '../../../../php/classes/Noticia.php';
-        $noticia = new Noticia(0, $titulo, $subTitulo, $autor, $foto, $textoDiv, $categoria, $data, $local);
-        $bd->addNoticia($noticia);
+        $noticia = new Noticia($id, $titulo, $subTitulo, $autor, $foto, $textoDiv, $categoria, "", $local);
+        $bd->editarNoticia($noticia);
         
-    }else{
-        $foto = "";
     }
+}else{
+    // Pegando o ID na URL
+    if(empty($_GET["idNoticia"])) echo "<script>alert('ERRO! Algo esta errado no seu link');window.location.href='exibir.php';</script>";
+    else $id = $_GET["idNoticia"];
+
+    $result = $bd->getNoticiaPorID($id);
+    $row = $result->fetch_assoc();
+    $id = $row["id"];
+    $titulo = $row["titulo"];
+    $subTitulo = $row["subTitulo"];
+    $autor = $row["autor"];
+    $local = $row["local"];
+    $imagem = $foto = $row["foto"];
+    $categoria = $foto = $row["categoria"];
+    if($categoria == 2){
+        $substitui = $id;
+    }
+    $texto = $row["texto"];
+    $texto = str_replace("<br>","\n",$texto);
 }
 
 ?>
@@ -82,7 +104,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Administrador - Caritas</title>
+    <title>SB Admin - Dashboard</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -138,6 +160,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
           </ol>
           
           <form method="post" action="<?php  echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" enctype="multipart/form-data">
+              <input style="display: none" name="idNoticia" value="<?php echo $id;?>">
               <div class="form-group">
                   <label>Título da notícia</label><span <?php if($tituloErr != "") {echo 'class="erro">'; echo "$tituloErr";} else echo '>';?></span>
                   <input class="form-control" name="titulo" value="<?php echo "$titulo" ?>">
@@ -164,7 +187,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               <br>
               <div class="form-group">
                   <label>Notícia</label><span <?php if($textoErr != "") {echo 'class="erro">'; echo "$textoErr";} else echo '>';?></span>
-                  <textarea class="form-control" rows="8" name="texto" style="height: 400px"><?php echo "$texto"; ?></textarea>
+                  <textarea class="form-control" rows="8" name="texto"><?php echo "$texto"; ?></textarea>
               </div>
               
               <button type="button" class="btLabel" data-toggle="modal" data-target="#selCatNoticia">
@@ -172,7 +195,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
               </button><span <?php if($categoriaErr != "") {echo 'class="erro">'; echo "$categoriaErr";} else echo '>';?></span>
               <br><br>
 
-              <label id="lbSubmit" for="submit" class="btLabel">Enviar</label>
+              <label id="lbSubmit" for="submit" class="btLabel">Salvar</label>
               <input class="none" type="submit" id="submit">
               <!-- Seleciona Categoria Modal-->
             <?php include '../../alertas/selecionaCategoriaNoticia.php'; ?>

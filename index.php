@@ -124,20 +124,23 @@
                 </figure>
 
                 <div style="display: inline-block; padding: 20px; width: 400px; vertical-align: central">
-                <form style="padding: 30px; background-color: #fe3333; color: white;">
-                    Cadastre o seu email e receba as mais novas notícias sobre a Cáritas
-                    <div class="form-group">
-                        <label for="exampleInputEmail1" style="font-weight: bold; text-align: left">Nome</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Nome completo">
-                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                    </div>
-                    <div class="form-group">
-                        <label for="exampleInputPassword1" style="font-weight: bold; text-align: left">Email</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1" placeholder="exemplo@email.com">
-                    </div>
-                    <br>
-                    <button type="submit" class="btn btn-primary">Cadastrar</button>
-                </form>
+                    <form style="padding: 30px; background-color: #fe3333; color: white;" method="post" action="php/cadastrarUser.php">
+                        Cadastre o seu email e receba as mais novas notícias sobre a Cáritas
+                        <div class="form-group">
+                            <label for="exampleInputEmail1" style="font-weight: bold; text-align: left">Nome</label>
+                            <input name="nome" type="text" class="form-control" id="exampleInputEmail1" placeholder="Nome completo">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight: bold; text-align: left">Telefone Celular</label>
+                            <input name="telefone" class="form-control" id="exampleInputPassword1" placeholder="(00) 00000-0000">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputPassword1" style="font-weight: bold; text-align: left">Email</label>
+                            <input name="email" type="email" class="form-control" id="exampleInputPassword1" placeholder="exemplo@email.com" aria-describedby="emailHelp">
+                        </div>
+                        <br>
+                        <button type="submit" class="btn btn-primary">Cadastrar</button>
+                    </form>
                 </div>
             </div>
             <!-- =================================================================================================================-->

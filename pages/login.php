@@ -1,5 +1,6 @@
       
 <?php
+    session_start();
     $login = $senha = "";
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (!empty($_POST["login"])) 
@@ -9,9 +10,9 @@
         if($login != "" && $senha != ""){
             require_once '../php/classes/BDconnect.php';
             $bd = new BDconnect();
-            if($bd->login($login, $senha)) {
+            if($bd->login($login, md5($senha))) {
                 //echo "<script>alert('Logado com sucesso');</script>";
-                setcookie("loginCaritas",$login);
+                $_SESSION['caritaslogin'] = $login;
                 header('Location: admin/index.php');
                 exit();
             }else

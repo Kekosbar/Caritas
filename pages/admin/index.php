@@ -1,8 +1,5 @@
-<?php
-$login_cookie = $_COOKIE['loginCaritas'];
-if(!isset($login_cookie)){
-    echo "<script>alert('Você precisa estar logado para acessar este local');window.location.href='/./Caritas/pages/login.php';</script>";
-}
+<?php 
+include './Arquivos/verificaLogin.php';
 ?>
 
 <!DOCTYPE html>
@@ -16,7 +13,7 @@ if(!isset($login_cookie)){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Dashboard</title>
+    <title>Administrador - Caritas</title>
 
     <!-- Bootstrap core CSS-->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -29,6 +26,9 @@ if(!isset($login_cookie)){
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin.css" rel="stylesheet">
+    
+    <script src="/./Caritas/pages/admin/js/padrao.js"></script>
+    
 
   </head>
 
@@ -52,7 +52,7 @@ if(!isset($login_cookie)){
             </li>
             <li class="breadcrumb-item active">Overview</li>
           </ol>
-
+          
           <!-- Icon Cards-->
           <div class="row">
             <div class="col-xl-3 col-sm-6 mb-3">
@@ -157,8 +157,8 @@ if(!isset($login_cookie)){
     </a>
 
     <!-- Logout Modal-->
-    <?php include 'alertas/logout.html'; ?>
-
+    <?php include 'alertas/logout.php'; ?>
+    
     <!-- Bootstrap core JavaScript-->
     <script src="vendor/jquery/jquery.min.js"></script>
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>

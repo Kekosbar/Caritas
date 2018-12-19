@@ -10,7 +10,7 @@
             <div class="modal-body">Você tem certeza que deseja finalizar a sessão?</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-primary" href="/./Caritas/pages/login.php">Confirmar</a>
+                <a href="/./Caritas/pages/admin/Arquivos/logout.php"><button class="btn btn-primary">Confirmar</button></a>
             </div>
         </div>
     </div>

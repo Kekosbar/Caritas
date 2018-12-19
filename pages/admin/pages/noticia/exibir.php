@@ -1,7 +1,15 @@
 <?php
-$login_cookie = $_COOKIE['loginCaritas'];
-if(!isset($login_cookie)){
-    echo "<script>alert('Você precisa estar logado para acessar este local');window.location.href='../../../login.php';</script>";
+include '../../Arquivos/verificaLogin.php';
+
+require_once '../../../../php/classes/BDconnect.php';
+$bd = new BDconnect();
+
+// Clique no DELETAR
+if ($_GET['fn'] == "deletar"){
+    if (!empty($_GET['id'])){
+        $id = $_GET['id'];
+        $bd->deletarNoticia($id);
+    }
 }
 ?>
 
@@ -16,7 +24,7 @@ if(!isset($login_cookie)){
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin - Dashboard</title>
+    <title>Caritas - Administrador</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -63,42 +71,89 @@ if(!isset($login_cookie)){
                   Noticias Principal
               </div>
               <div class="card-body row">
-                  <div id="noticia">
-                      <img height="150px" width="200px" src="../../../../img/igreja.jpg"/>
-                      <div class="card-header">Titulo da notícia</div>
-                  </div>
+                  <?php
+                    $result = $bd->getNoticias(1);
+                    if($result != null){
+                      $row = $result->fetch_assoc();
+                      $id = $row["id"];
+                      $titulo = $row["titulo"];
+                      $foto = $row["foto"];
+                      
+                      echo '
+                         <div id="noticia">
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10pt; margin-bottom: 15px;"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="editar.php?idNoticia='.$id.'">Editar</a>
+                                <a class="dropdown-item" href="?fn=deletar&id='.$id.'">Excluir</a>
+                              </div>
+                            </div>
+                            <img height="150px" width="200px" src="data:image;base64,'.$foto.'"/>
+                            <div class="card-header">'.$titulo.'</div>
+                        </div> 
+                        ';
+                    }
+                  ?>
               </div>
               <!-- ====================================================================================-->
               <div class="card-header">
                   Noticias Secundária
               </div>
               <div class="card-body row">
-                  <div id="noticia">
-                      <img height="150px" width="200px" src="../../../../img/img.jpg"/>
-                      <div class="card-header">Titulo da notícia</div>
-                  </div>
-                  <div id="noticia">
-                      <img height="150px" width="200px" src="../../../../img/img3.jpg"/>
-                      <div class="card-header">Titulo da notícia</div>
-                  </div>
+                  <?php
+                    $result = $bd->getNoticias(2);
+                    if($result != null){
+                    while($row = $result->fetch_assoc()){
+                      $id = $row["id"];
+                      $titulo = $row["titulo"];
+                      $foto = $row["foto"];
+                      
+                      echo '
+                         <div id="noticia">
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10pt; margin-bottom: 15px;"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="editar.php?idNoticia='.$id.'">Editar</a>
+                                <a class="dropdown-item" href="?fn=deletar&id='.$id.'">Excluir</a>
+                              </div>
+                            </div>
+                            <img height="150px" width="200px" src="data:image;base64,'.$foto.'"/>
+                            <div class="card-header">'.$titulo.'</div>
+                        </div> 
+                        ';
+                    }
+                    }
+                  ?>
               </div>
               <!-- ====================================================================================-->
               <div class="card-header">
                   Noticias Terciárias
               </div>
               <div class="card-body row">
-                  <div id="noticia">
-                      <img height="150px" width="200px" src="../../../../img/noticias/casaDoce2.JPG"/>
-                      <div class="card-header">Titulo da notícia</div>
-                  </div>
-                  <div id="noticia" style="width: 230px;">
-                      <img height="150px" width="200px" src="../../../../img/noticias/IMG-20180506-WA0006.jpg"/>
-                      <div class="card-header">Feira da economia solidária teste um titulo grande</div>
-                  </div>
-                  <div id="noticia">
-                      <img height="150px" width="200px" src="../../../../img/noticias/casaDoce.JPG"/>
-                      <div class="card-header">Titulo da notícia</div>
-                  </div>
+                  <?php
+                    $result = $bd->getNoticias(3);
+                    if($result != null){
+                    while($row = $result->fetch_assoc()){
+                      $id = $row["id"];
+                      $titulo = $row["titulo"];
+                      $foto = $row["foto"];
+                      
+                      echo '
+                         <div id="noticia">
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10pt; margin-bottom: 15px;"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="editar.php?idNoticia='.$id.'">Editar</a>
+                                <a class="dropdown-item" href="?fn=deletar&id='.$id.'">Excluir</a>
+                              </div>
+                            </div>
+                            <img height="150px" width="200px" src="data:image;base64,'.$foto.'"/>
+                            <div class="card-header">'.$titulo.'</div>
+                        </div> 
+                        ';
+                    }
+                    }
+                  ?>
               </div>
           </div>
 
@@ -127,7 +182,7 @@ if(!isset($login_cookie)){
     </a>
 
     <!-- Logout Modal-->
-    <?php include '../../alertas/logout.html'; ?>
+    <?php include '../../alertas/logout.php'; ?>
 
     <!-- Bootstrap core JavaScript-->
     <script src="../../vendor/jquery/jquery.min.js"></script>

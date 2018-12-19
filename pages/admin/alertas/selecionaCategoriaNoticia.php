@@ -19,18 +19,19 @@
                     </a>
                 </div>
                 <?php 
-                    $result = $bd->getNoticias(1);
-                    if($result != null){
-                        $row = $result->fetch_assoc();
-                        $id = $row["id"];
-                        $titulo = $row["titulo"];
-                        $foto = $row["foto"];
+                    $result_d = $bd->getNoticias(1);
+                    if($result_d != null){
+                        $row_d = $result_d->fetch_assoc();
+                        $id_d = $row_d["id"];
+                        $titulo_d = $row_d["titulo"];
+                        $foto_d = $row_d["foto"];
                     }
                 ?>
                 <div class="card-body row">
                     <div id="noticia">
-                        <img height="150px" width="200px" src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>"/>
-                        <div class="card-header"><?php if($result != null) echo $titulo; ?></div>
+                        <input style="display: none" name="NoticiaPrin" value="<?php if($result_d != null) echo $id_d;?>">
+                        <img height="150px" width="200px" src="<?php if($result_d != null) echo 'data:image;base64,'.$foto_d;?>"/>
+                        <div class="card-header"><?php if($result_d != null) echo $titulo_d; ?></div>
                     </div>
                 </div>
                 <!-- ====================================================================================-->
@@ -42,35 +43,36 @@
                 </div>
                 <div class="card-body row">
                     <?php 
-                        $result = $bd->getNoticias(2);
-                        if($result != null){
-                            $row = $result->fetch_assoc();
-                            $id = $row["id"];
-                            $titulo = $row["titulo"];
-                            $foto = $row["foto"];
+                        $result_d = $bd->getNoticias(2);
+                        $id_d = -1;
+                        if($result_d != null){
+                            $row_d = $result_d->fetch_assoc();
+                            $id_d = $row_d["id"];
+                            $titulo_d = $row_d["titulo"];
+                            $foto_d = $row_d["foto"];
                         }
                     ?>
                     <div id="noticia">
-                        <input id="notSec1" type="radio" name="notSubst" value="1" <?php if($substitui == 1) echo 'checked'; ?>>
+                        <input id="notSec1" type="radio" name="notSubst" value="<?php echo $id_d;?>" <?php if($substitui == $id_d) echo ' checked'; ?>>
                         <label for="notSec1">Substituir notícia</label>
                         <br>
-                        <img height="150px" width="200px" alt="vazio" src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>"/>
-                        <div class="card-header"><?php if($result != null) echo $titulo; ?></div>
+                        <img height="150px" width="200px" alt="vazio" src="<?php if($result_d != null) echo 'data:image;base64,'.$foto_d;?>"/>
+                        <div class="card-header"><?php if($result_d != null) echo $titulo_d; ?></div>
                     </div>
                     <?php
-                        if($result != null){
-                            $row = $result->fetch_assoc();
-                            $id = $row["id"];
-                            $titulo = $row["titulo"];
-                            $foto = $row["foto"];
+                        $id_x = -2;
+                        if($row_x = $result_d->fetch_assoc()){
+                            $id_x = $row_x["id"];
+                            $titulo_x = $row_x["titulo"];
+                            $foto_x = $row_x["foto"];
                         }
                     ?>
                     <div id="noticia">
-                        <input id="notSec2" type="radio" name="notSubst" value="2" <?php if($substitui == 2) echo 'checked'; ?>>
+                        <input id="notSec2" type="radio" name="notSubst" value="<?php echo $id_x;?>" <?php if($substitui == $id_x) echo ' checked'; ?>>
                         <label for="notSec2">Substituir notícia</label>
                         <br>
-                        <img height="150px" width="200px" alt="Vazio" src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>"/>
-                        <div class="card-header"><?php if($result != null) echo $titulo; ?></div>
+                        <img height="150px" width="200px" alt="Vazio" src="<?php if($result_d != null) echo 'data:image;base64,'.$foto_x;?>"/>
+                        <div class="card-header"><?php if($result_d != null) echo $titulo_x; ?></div>
                     </div>
                 </div>
                 <!-- ====================================================================================-->
