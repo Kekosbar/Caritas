@@ -155,6 +155,36 @@ if ($_GET['fn'] == "deletar"){
                     }
                   ?>
               </div>
+              <!-- ====================================================================================-->
+              <div class="card-header">
+                  Noticias Carrosel
+              </div>
+              <div class="card-body row">
+                  <?php
+                    $result = $bd->getNoticias(4);
+                    if($result != null){
+                    while($row = $result->fetch_assoc()){
+                      $id = $row["id"];
+                      $titulo = $row["titulo"];
+                      $foto = $row["foto"];
+                      
+                      echo '
+                         <div id="noticia">
+                            <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="font-size: 10pt; margin-bottom: 15px;"></button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <a class="dropdown-item" href="editar.php?idNoticia='.$id.'">Editar</a>
+                                <a class="dropdown-item" href="?fn=deletar&id='.$id.'">Excluir</a>
+                              </div>
+                            </div>
+                            <img height="150px" width="200px" src="data:image;base64,'.$foto.'"/>
+                            <div class="card-header">'.$titulo.'</div>
+                        </div> 
+                        ';
+                    }
+                    }
+                  ?>
+              </div>
           </div>
 
 

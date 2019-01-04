@@ -1,0 +1,81 @@
+/* General styles */
+section.about {
+    font-size: 14pt;
+    line-height: 24px;
+    font-family: 'futura_ltbook', sans-serif;
+    color: #484848;
+}
+
+section.about h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #484848;
+    font-family: 'futura_ltbold', sans-serif;
+}
+
+section.about .about_bg {
+    background: url(../images/about_bg.png)no-repeat right;
+}
+
+/* About */
+section.about .about_content {
+    margin-right: 25px;
+}
+section.about .about_content > h2 {
+    font-size: 40px;
+    margin: 90px 0 15px;
+    color:#ffcb0f;
+}
+section.about .about_content > h3 {
+    font-size: 30px;
+    margin: 2px 0 30px;
+    text-transform: inherit;
+}
+section.about .about_content > p {
+    line-height: 18px;
+    margin-bottom: 18px;
+    text-align: justify;
+}
+section.about .about_content .btn.know_btn {
+    margin: 18px 0 60px;
+}
+section.about .btn.know_btn {
+    background: #ffcb0f none repeat scroll 0 0;
+    border-radius: 30px;
+    color: #fff;
+    font-family: "futura_ltbold",sans-serif;
+    font-size: 16px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    border:1px solid transparent;
+}
+
+section.about .btn.know_btn:hover{
+    background: transparent;
+    color:#ffcb0f;
+    border:1px solid #ffcb0f;
+}
+
+/* Why us */
+#why_us {
+    background: #f2f7fa none repeat scroll 0 0;
+    padding-bottom: 50px;
+    line-height: 18px;
+}
+#why_us h2 {
+    margin: 70px 0 20px;
+}
+.why_us_item{ padding-top: 55px;}
+#why_us .fa{
+    border-radius: 100%;
+    box-shadow: 0 0 0 10px #ffcb0f, 0 0 0 20px #fadb64, 0 0 0 30px #f7e59c;
+    padding: 38px;
+    font-size:45px;
+}
+.why_us_item > h4 {
+    font-size: 15px;
+    margin: 60px 0 20px;
+}
+
+
+

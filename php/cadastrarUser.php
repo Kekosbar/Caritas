@@ -19,10 +19,10 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_POST["nome"])) {$nomeErr = "ERRO! Insira o nome completo"; $validade = false;}
     else $nome = $_POST["nome"];
     
-    if(empty($_POST["telefone"])) {$telefoneErr = "ERRO! Insira o nome completo"; $validade = false;}
+    if(empty($_POST["telefone"])) {$telefoneErr = "ERRO! Insira o telefone"; $validade = false;}
     else $telefone = $_POST["telefone"];
     
-    if(empty($_POST["email"])) {$emailErr = "ERRO! Insira o nome completo"; $validade = false;}
+    if(empty($_POST["email"])) {$emailErr = "ERRO! Insira o email"; $validade = false;}
     else $email = $_POST["email"];
     
     if($validade){
@@ -36,5 +36,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }else{
             echo '<script> alerta("Ocorreu um erro, tente mais tarde"); </script>';
         }
+    }else{
+        echo '<script> alerta("Ocorreu um erro, você esqueceu algum campo em branco"); </script>';
     }
 }

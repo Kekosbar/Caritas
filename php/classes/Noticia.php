@@ -11,6 +11,8 @@ class Noticia {
     private $categoria;
     private $data;
     private $local;
+    private $exibeTitulo;
+    private $exibesubtitulo;
     
     function __construct($id, $titulo, $subTitulo, $autor, $foto, $texto, $categoria, $data, $local) {
         $this->id = $id;
@@ -23,7 +25,15 @@ class Noticia {
         $this->data = $data;
         $this->local = $local;
     }
-    
+        
+    function getExibeTitulo() {
+        return $this->exibeTitulo;
+    }
+
+    function getExibesubtitulo() {
+        return $this->exibesubtitulo;
+    }
+
     function getId() {
         return $this->id;
     }
@@ -56,6 +66,10 @@ class Noticia {
         return $this->data;
     }
 
+    function getLocal() {
+        return $this->local;
+    }
+    
     function setTitulo($titulo) {
         $this->titulo = $titulo;
     }
@@ -84,12 +98,17 @@ class Noticia {
         $this->data = $data;
     }
 
-    function getLocal() {
-        return $this->local;
-    }
-
     function setLocal($local) {
         $this->local = $local;
     }
+
+    function setExibeTitulo($exibeTitulo) {
+        $this->exibeTitulo = $exibeTitulo;
+    }
+
+    function setExibesubtitulo($exibesubtitulo) {
+        $this->exibesubtitulo = $exibesubtitulo;
+    }
+
     
 }

@@ -9,8 +9,37 @@ DIV#carouselExampleControls h1{
 }
 
 div#carouselExampleControls img{
-    height: 600px;
+    height: 300px;
 }
+
+@media (min-width: 992px) {
+    div#carouselExampleControls img{
+        height: 600px;
+    }    
+}
+
+span#impacto{
+    font-size: 22pt;
+    font-weight: bolder;
+    text-decoration: underline;
+}
+
+/*      SOBRE
+================================*/
+section#about img{
+    height: 80%; 
+    width: 90%; 
+    margin-top: 10%
+}
+
+@media (min-width: 992px) {
+    section#about img{
+        height: 80%; 
+        width: 100%; 
+        margin-top: 10%
+    }
+}
+
 
 /*  NOTICIA
 ===============================*/
@@ -83,10 +112,10 @@ border: 1px solid black;
 .meuparalaxe { 
     /* The image used */
     background-image: url("../img/fundo2.jpg");
-
+    
     /* Set a specific height */
     height: 500px; 
-
+    
     /* Create the parallax scrolling effect */
     background-attachment: fixed;
     background-position: center;
@@ -94,28 +123,219 @@ border: 1px solid black;
     background-size: cover;
 }
 
-/*      DIV COLABORE
-=====================================*/
-
-#container {
-  display: inline-block;
-  position: relative;
+div#notTerciaria{
+    padding: 50px;
+    background-color: white;
+    border-top: solid #fad201 3px;
 }
 
-#container figcaption {
-  position: absolute;
-  top: 10%;
-  left: 10%;
-  right: 10%;
-  font-size: 30pt;
-  color: #e4e4e4;
-  text-shadow: 0px 0px 5px black;
+div#notTerciaria img{
+    width: 220px;
+    height: 150px;
 }
 
-button#doeAgora{
-    width: 25%; 
-    margin-top: 25%; 
+div#notTerciaria div#linha{
+    margin-bottom: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+div#notTerciaria div#noticia{
+    margin-right: 30px;
+    transition: 1s;
+}
+
+@media (min-width: 992px) {
+    div#notTerciaria div#noticia{
+        box-shadow: 2px 2px 5px #fad201;
+    }
+    
+    div#notTerciaria a:hover div#noticia{
+        box-shadow: 2px 2px 5px #c2241a;
+    }    
+}
+
+
+div#notTerciaria div#escritos{
+    background-color: #46413a;
+    color: #e8e8e8;
+    padding: 15px;
+    width: 220px;
+}
+
+div#notTerciaria #titulo{
+    font-size: 13pt;
+    font-weight: bold;
+    top: 10px;
+    position: relative;
+}
+
+div#notTerciaria #data{
+    font-size: 8pt;
+    border-bottom: solid #f4f4f4 1px;
+    margin-bottom: 55px;
+}
+
+/*      PROJETOS
+===========================================*/
+
+div#projetos{
+    padding: 40px;
+    padding-top: 80px;
+    padding-bottom: 160px;
+    background-color: #746ee0;
+    height: 100%;
+}
+
+div#projetos img{
+    margin-top: 120px;
+    width: 40%;
+}
+
+div#projetos span#titulo{
+    position: absolute;
+    color: yellow;
+    margin-left: 20%;
+    padding: 20px;
+    border: solid yellow 5px;
+    background-color: rgba(55, 255, 77, 0.3);
     font-size: 30pt;
-    font-family: "Times New Roman", Times, serif;
+    font-family: "Lucida Console", Monaco, monospace;
+    font-weight: bold;
+}
+
+@media (min-width: 992px) {
+    div#projetos span#titulo{
+        margin-left: 40%;
+    }
+}
+
+/*      COLABORE
+=============================================*/
+
+section#colaborar{
+    padding: 100px;
+    font-size: 18pt;
+    color: white;
+    font-weight: bolder;
+    height: 100%;
+    width: 100%;
+}
+
+section#colaborar span{
+    font-family: "Lucida Console", Monaco, serif;
+    font-size: 200%;
+    font-weight: bolder;
+    color: yellow;
+    border: solid yellow 5px;
+    background-color: rgba(55, 255, 77, 0.3);
+    padding: 8px;
+}
+
+section#colaborar a{
+    padding: 15px;
+    font-size: 20pt;
+    background-color: #5a5db1;
+    color: white;
+    font-weight: bolder;
+    border: solid #5a5db1 5px;
+    transition: 0.5s;
+}
+
+section#colaborar a:hover{
+    background-color: transparent;
+    color: #7c80fe;
+}
+
+section#colaborar img{
+    display: none;
+}
+
+@media (min-width: 992px) {
+    section#colaborar a{
+        margin-left: 120px;
+        margin-right: 100px;
+        margin-top: 80px;
+    }
+    section#colaborar div#imgsColabore{
+        justify-content: center;
+        align-items: center;
+    }
+    section#colaborar img{
+        display: block;
+    }
+}
+
+/*      DADOS CONTATO
+=============================================*/
+
+section#dadoscontato{
+    font-size: 16pt;
+}
+
+section#dadoscontato img{
+    height: 50px;
+    margin-bottom: 10px;
+}
+
+/*      CONTATE-NOS
+==============================================*/
+
+section#contatenos{
+    
+}
+
+section#contatenos #titulo{
+    color: white;
+}
+
+section#contatenos form{
+    margin-top: 50px;
+    width: 100%;
+    padding: 10px;
+}
+
+section#contatenos form input,textarea{
+    padding: 10px;
+    background-color: #eeeeee;
+    color: #282828;
+    border: solid #be362a 3px;
+}
+
+section#contatenos form input:hover,textarea:hover{
+    border-color: blue;
+}
+
+section#contatenos form div input{
+    
+}
+
+section#contatenos form .completar{
+    margin-top: 10px;
+    width: 100%;
+}
+
+section#contatenos form .direita{
+    margin-left: 10px;
+}
+
+section#contatenos form label{
+    margin-top: 30px;
+    font-size: 14pt;
+    font-weight: bolder;
+    margin-left: 40%;
+}
+
+@media (min-width: 992px) {
+ 
+    section#contatenos form{
+        width: 600px;
+        margin-left: 29%;
+        padding: 0;
+    }
+    
+    section#contatenos form div input{
+        width: 310px;
+    }
 
 }

@@ -31,8 +31,16 @@ class BDconnect {
         $foto = $noticia->getFoto();
         $categoria = $noticia->getCategoria();
         $local = $noticia->getLocal();
-        $query = "INSERT INTO Noticia (titulo, subtitulo, autor, texto, foto, categoria, local) VALUES "
-                . "('$titulo','$subtitulo','$autor','$texto','$foto',$categoria, '$local');";
+        $exibetitulo = $noticia->getExibeTitulo();
+        $exibesubtitulo = $noticia->getExibesubtitulo();
+        $query = "";
+        if($categoria != 4){
+            $query = "INSERT INTO Noticia (titulo, subtitulo, autor, texto, foto, categoria, local) VALUES "
+                    . "('$titulo','$subtitulo','$autor','$texto','$foto',$categoria, '$local');";
+        }else{
+            $query = "INSERT INTO Noticia (titulo, subtitulo, autor, texto, foto, categoria, local, exibeTitulo, EXIBEsUBTITULO) VALUES "
+                    . "('$titulo','$subtitulo','$autor','$texto','$foto',$categoria, '$local', $exibetitulo, $exibesubtitulo);";
+        }
         return $this->conn->query($query);
     }
     
@@ -55,6 +63,16 @@ class BDconnect {
         $telefone = $user->getTelefone();
         $email = $user->getEmail();
         $query = "INSERT INTO user(nome, telefone, email) VALUES('$nome', '$telefone', '$email');";
+        return $this->conn->query($query);
+    }
+    
+    function addVisita(){
+        $query = "INSERT INTO Visitas() VALUES();";
+        return $this->conn->query($query);
+    }
+    
+    function addMensagem($nome, $sobreNome, $email, $texto){
+        $query = "INSERT INTO Mensagens (nome, sobrenome, email, texto) VALUES('$nome','$sobreNome','$email','$texto');";
         return $this->conn->query($query);
     }
     
@@ -99,7 +117,7 @@ class BDconnect {
     //==============================================================================
     
     function getNoticias($categoria){
-        $query = "SELECT id, titulo, subTitulo, autor, texto, foto, data, categoria, local FROM Noticia WHERE categoria = ".$categoria;
+        $query = "SELECT id, titulo, subTitulo, autor, texto, foto, data, categoria, local, exibeTitulo, EXIBEsUBTITULO FROM Noticia WHERE categoria = ".$categoria;
         $result = $this->conn->query($query);
         if($result->num_rows > 0){
             return $result;
@@ -110,6 +128,16 @@ class BDconnect {
     
     function getNoticiaPorID($id){
         $query = "SELECT id, titulo, subTitulo, autor, texto, foto, data, categoria, local FROM Noticia WHERE id = ".$id;
+        $result = $this->conn->query($query);
+        if($result->num_rows > 0){
+            return $result;
+        } else {
+            return null;
+        }
+    }
+    
+    function getNoticiaPorTexto($texto){
+        $query = "SELECT id, titulo, subTitulo, autor, foto, data FROM Noticia WHERE texto LIKE '%$texto%'";
         $result = $this->conn->query($query);
         if($result->num_rows > 0){
             return $result;
@@ -134,6 +162,17 @@ class BDconnect {
         $query = "SELECT * FROM user";
         $result = $this->conn->query($query);
         return $result;
+    }
+    
+    function getUserEmails(){
+        $query = "SELECT email FROM user";
+        $result = $this->conn->query($query);
+        return $result;
+    }
+    
+    function getVisitas(){
+        $query = "SELECT month(data) AS mes, COUNT(0) AS total FROM Visitas GROUP BY month(data);";
+        return $this->conn->query($query);
     }
     
     //  DELETE FROM

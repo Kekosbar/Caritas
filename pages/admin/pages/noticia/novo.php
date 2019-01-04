@@ -1,7 +1,7 @@
 <?php
 include '../../Arquivos/verificaLogin.php';
 
-$titulo = $subTitulo = $autor = $texto = $categoria = $foto = $substitui = $local = $imagem = "";
+$titulo = $subTitulo = $autor = $texto = $categoria = $foto = $substitui = $local = $imagem = $exibeTitulo = $exibesubtitulo = "";
 $tituloErr = $subTituloErr = $autorErr = $textoErr = $categoriaErr = $fotoErr = $substituiErr = $localErr = "";
 $textoDiv = "";
 
@@ -33,6 +33,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_POST["local"])) {$localErr = "ERRO! Insira o local"; $validade = false;}
     else $local = $_POST["local"];
     
+    $exibeTitulo = $_POST['tituloEx'];
+    $exibesubtitulo = $_POST['subtituloEx'];
+    if($exibeTitulo == "on"){
+        $exibeTitulo = 1;
+    }else{
+        $exibeTitulo = 0;
+    }
+    if($exibesubtitulo == "on"){
+        $exibesubtitulo = 1;
+    }else{
+        $exibesubtitulo = 0;
+    }
+    
     if($categoria == 2){
         if(empty($_POST["notSubst"])) {$substituiErr = "ERRO! Selecione a notícia que será substituida"; $validade = false;}
         else $substitui = $_POST["notSubst"];
@@ -62,8 +75,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         require_once '../../../../php/classes/Noticia.php';
         $noticia = new Noticia(0, $titulo, $subTitulo, $autor, $foto, $textoDiv, $categoria, $data, $local);
-        $bd->addNoticia($noticia);
-        
+        if($categoria == 4){
+            $noticia->setExibeTitulo($exibeTitulo);
+            $noticia->setExibesubtitulo($exibesubtitulo);
+        }
+        $resultado = $bd->addNoticia($noticia);
+        if($resultado){
+            echo '<script> alert("Dados cadastrados com sucesso"); window.location = "exibir.php"; </script>';
+        }else{
+            echo '<script> alert("Ocorreu um erro, tente mais tarde"); window.location = "exibir.php"; </script>';
+        }
     }else{
         $foto = "";
     }

@@ -75,7 +75,9 @@ $bd = new BDconnect();
           <!-- Area Chart Example-->
           <div class="card mb-3">
               <div class="row" style="margin-left: 0px; padding: 5px">
-                  
+                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modalEmails">
+                    Emails
+                  </button>
               </div>
               <table class="table table-striped" style="width: 100%; max-width: 100%">
                   <thead>
@@ -112,11 +114,37 @@ $bd = new BDconnect();
         </div>
         <!-- /.container-fluid -->
 
+        
+        <!-- Modal -->
+        <div class="modal fade" id="modalEmails" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Todos os emails dos visitantes</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <?php
+                    $result = $bd->getUserEmails();
+                    if($result != null){
+                        while ($row = $result->fetch_assoc()){
+                            $email = $row["email"];
+                            echo $email.' ';
+                        }
+                    }
+                ?>
+              </div>
+            </div>
+          </div>
+        </div>
+        
         <!-- Sticky Footer -->
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
+              <span>Copyright © Caritas Arquidiocesana de Diamantina 2019</span>
             </div>
           </div>
         </footer>

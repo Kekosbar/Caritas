@@ -39,6 +39,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     if(empty($_POST["local"])) {$localErr = "ERRO! Insira o local"; $validade = false;}
     else $local = $_POST["local"];
     
+    $exibeTitulo = $_POST['tituloEx'];
+    $exibesubtitulo = $_POST['subtituloEx'];
+    if($exibeTitulo == "on"){
+        $exibeTitulo = 1;
+    }else{
+        $exibeTitulo = 0;
+    }
+    if($exibesubtitulo == "on"){
+        $exibesubtitulo = 1;
+    }else{
+        $exibesubtitulo = 0;
+    }
+    
     // Preparar imagem para salvar no BD
     if (getimagesize($_FILES['image']['tmp_name']) == false){
         $fotoErr = "ERRO! Selecione uma foto para a capa";
@@ -67,8 +80,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }
         require_once '../../../../php/classes/Noticia.php';
         $noticia = new Noticia($id, $titulo, $subTitulo, $autor, $foto, $textoDiv, $categoria, "", $local);
+        if($categoria == 4){
+            $noticia->setExibeTitulo($exibeTitulo);
+            $noticia->setExibesubtitulo($exibesubtitulo);
+        }
         $bd->editarNoticia($noticia);
-        
+        if($resultado){
+            echo '<script> alert("Dados alterados com sucesso"); window.location = "exibir.php"; </script>';
+        }else{
+            echo '<script> alert("Ocorreu um erro, tente mais tarde"); window.location = "exibir.php"; </script>';
+        }
     }
 }else{
     // Pegando o ID na URL

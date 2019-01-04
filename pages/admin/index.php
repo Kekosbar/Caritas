@@ -1,5 +1,18 @@
 <?php 
 include './Arquivos/verificaLogin.php';
+
+require_once '../../php/classes/BDconnect.php';
+$bd = new BDconnect();
+$result = $bd->getVisitas();
+$total[12];
+$maximo = -1;
+while ($row = $result->fetch_assoc()){
+    $mes = $row["mes"];
+    $valor = $row["total"];
+    $total[$mes] = $valor;
+    if($valor > $maximo)
+        $maximo = $valor;
+}
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +41,22 @@ include './Arquivos/verificaLogin.php';
     <link href="css/sb-admin.css" rel="stylesheet">
     
     <script src="/./Caritas/pages/admin/js/padrao.js"></script>
-    
+    <script>
+        // Obtem os valores carregados no php
+        var janeiro = "<?php Print($total[1]); ?>";
+        var fevereiro = "<?php Print($total[2]); ?>";
+        var marco = "<?php Print($total[3]); ?>";
+        var abril = "<?php Print($total[4]); ?>";
+        var maio = "<?php Print($total[5]); ?>";
+        var junho = "<?php Print($total[6]); ?>";
+        var julho = "<?php Print($total[7]); ?>";
+        var agosto = "<?php Print($total[8]); ?>";
+        var setembro = "<?php Print($total[9]); ?>";
+        var outubro = "<?php Print($total[10]); ?>";
+        var novembro = "<?php Print($total[11]); ?>";
+        var dezembro = "<?php Print($total[12]); ?>";
+        var maximo = "<?php Print($maximo); ?>";
+    </script>
 
   </head>
 
@@ -125,11 +153,11 @@ include './Arquivos/verificaLogin.php';
           <div class="card mb-3">
             <div class="card-header">
               <i class="fas fa-chart-area"></i>
-              Número de visitantes do site</div>
+              Número de visitantes no site</div>
             <div class="card-body">
               <canvas id="myAreaChart" width="100%" height="30"></canvas>
             </div>
-            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+              <div class="card-footer small text-muted">Resultado para o ano de <?php echo date("Y"); ?></div>
           </div>
 
 

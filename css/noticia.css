@@ -21,3 +21,7 @@ div#corpo h1{
 img#imgPrincipal{
     width: 100%;
 }
+
+h2{
+    font-weight: bolder;
+}

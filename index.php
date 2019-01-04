@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-
+<?php
+require_once './php/classes/BDconnect.php';
+$bd = new BDconnect();
+$bd->addVisita();
+?>
 <html>
     <head>
         <meta charset="UTF-8">
@@ -27,6 +31,8 @@
         <link href="css/index.css" rel="stylesheet" type="text/css">
         <link href="css/album.css" rel="stylesheet">
         <link href="css/carrosel.css" rel="stylesheet">
+        <link href="modelos/css/custom.css" rel="stylesheet">
+        <link href="modelos/css/grayscale.css" rel="stylesheet">
         
     </head>
     <body>
@@ -35,47 +41,69 @@
         ============================================================================================-->
         
         <?php include './php/cabecalho.php'; ?>
+     
+        <!--
+            SOBRE A CARITAS
+        =========================================================================================-->
+        
+        <section id="about" class="about" style="background-color: white;">
+            <div class="container about_bg" style=" padding: 0;">
+                <div class="row">
+                    <div style="width: 500px;">
+                        <img src="/./Caritas/img/caritasCasa.png" alt="">
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="about_content">
+                            <h2>Seja Bem Vindo</h2>
+                            <h3>Caritas Arquidiocesana de Diamantina</h3>
+                            <p>A Caritas Arquidiocesana de Diamantina (CAD), fundada em 1998 é uma entidade civil de direito privado, sem fins lucrativos, de duração indeterminada, de caráter filantrópico e de assistência social, com sede no município de Diamantina</p>
+                            <p>Atualmente, a Caritas atua com diversos projetos sociais que auxiliam <span id="impacto">+200 famílias</span> em torno de 34 municípios e região.</p>
+                            <a class="btn know_btn">Quem Somos</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
         <!-- CARROSEL DE IMAGENS-->
         <!-- =================================================================================-->
         
         <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <center>
-                    <img class="alinharCent" src="img/BANNER - CASA DO CIRINEU.jpg" alt="First slide">
-                    </center>
-                </div>
-                <div class="carousel-item">
-                    <img class="alinharCent" src="img/carrosel/CARTAZ - 2018.jpg" alt="Second slide">
-                </div>
-                <div class="carousel-item">
-                    <center>
-                        <img class="alinharCent" src="img/carrosel/apicultores.JPG" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1>Apicultores</h1>
-                        <p>Auxiliamos apicultores de Diamantina e região</p>
-                    </div>
-                    </center>
-                </div>
-                <div class="carousel-item">
-                    <center>
-                        <img class="alinharCent" src="img/carrosel/feira.jpg" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1>Feira de Economia Solidária</h1>
-                        <p></p>
-                    </div>
-                    </center>
-                </div>
-                <div class="carousel-item">
-                    <center>
-                        <img class="alinharCent" src="img/carrosel/oficina.jpg" alt="Third slide">
-                    <div class="carousel-caption d-none d-md-block">
-                        <h1>Oficina de capacitação</h1>
-                        <p></p>
-                    </div>
-                    </center>
-                </div>
+                <?php
+                    $result = $bd->getNoticias(4);
+                    if($result != null){
+                        $num = 0;
+                        while($row = $result->fetch_assoc()){
+                            $num++;
+                            $id = $row["id"];
+                            $titulo = $row["titulo"];
+                            $subTitulo = $row["subTitulo"];
+                            $exibeTitulo = $row["exibeTitulo"];
+                            $exibesubtitulo = $row["EXIBEsUBTITULO"];
+                            $foto = $row["foto"];
+                            echo '<div class="carousel-item';
+                            if($num == 1)
+                                echo ' active">';
+                            else
+                                echo '">';
+                            echo '  <a href="pages/noticia.php?idNoticia='.$id.'">
+                                    <center>
+                                        <img class="alinharCent" src="data:image;base64,'.$foto.'" alt="">
+                                        <div class="carousel-caption d-none d-md-block">';
+                                            if($exibeTitulo == 1){
+                                                echo "<h1>$titulo</h1>";
+                                            }
+                                            if($exibesubtitulo == 1){
+                                                echo "<p>$subTitulo</p>";
+                                            }
+                           echo '       </div>
+                                    </center>
+                                    </a>
+                                </div>';
+                        }
+                    }
+                ?>
             </div>
             <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -90,10 +118,6 @@
         <!-- NOTICIAS
         =========================================================================================-->
 
-        <?php
-            require_once './php/classes/BDconnect.php';
-            $bd = new BDconnect();
-        ?>
         <div class="album py-5" id="painelNoticias" style="background-color: #cbcbcb">
             <center>
             <div id="titulo">
@@ -185,173 +209,258 @@
                 </figure>
             </div>
             <!-- =================================================================================================================-->
-            <div style="background-color: #eaeaea; border-top: solid green 4px; ">
-                <div class="container" style="padding-top: 20px; ">
-
-                    <div class="row">
-                        <div class="col-md-4 noticia">
-                            <a href="pages/noticia1.php">
-                                <div class="card mb-4" id="interna">
-                                    <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" style="height: 225px; width: 100%; display: block;" src="img/noticias/IMG-20180506-WA0006.jpg" data-holder-rendered="true">
-                                <div class="card-body tituloNot">
-                                    <p class="card-text">A Feira de Economia Solidária ocorreu neste sábado, 15/09/2018, na praça do mercado velho</p>
-                                    <div class="d-flex justify-content-between align-items-center" style="bottom: 0; position: absolute; font-weight: bolder; font-size: 12pt">
-                                        <small class="text-muted">12/22/2018</small>
-                                    </div>
-                                </div>
+            <div id="notTerciaria" class="center">
+                <div id="linha" class="row center">
+                    <a href="#">
+                        <div id="noticia" class="row">
+                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
+                            <div id="escritos">
+                                <span id="data">22/12/2019</span><br/>
+                                <span id="titulo">Titulo da noticia</span>
                             </div>
-                            </a>
                         </div>
-                        <div class="col-md-4 noticia">
-                            <a href="pages/noticia2.php">
-                            <div class="card mb-4 noticia" id="interna">
-                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="img/noticias/casaDoce.JPG" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                                <div class="card-body tituloNot">
-                                    <p class="card-text">Exemplo de notícia, Casa do Doce.....</p>
-                                    <div class="d-flex justify-content-between align-items-center" style="bottom: 0; position: absolute; font-weight: bolder; font-size: 12pt">
-                                        <small class="text-muted">9 mins</small>
-                                    </div>
-                                </div>
+                    </a>
+                    <a href="#">
+                        <div id="noticia" class="row">
+                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
+                            <div id="escritos">
+                                <span id="data">22/12/2019</span><br/>
+                                <span id="titulo">Titulo da noticia</span>
                             </div>
-                            </a>
                         </div>
-                        <div class="col-md-4 noticia">
-                            <a href="pages/noticia.php">
-                            <div class="card mb-4 noticia" id="interna">
-                                <img class="card-img-top" data-src="holder.js/100px225?theme=thumb&amp;bg=55595c&amp;fg=eceeef&amp;text=Thumbnail" alt="Thumbnail [100%x225]" src="data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%22208%22%20height%3D%22225%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20208%20225%22%20preserveAspectRatio%3D%22none%22%3E%3Cdefs%3E%3Cstyle%20type%3D%22text%2Fcss%22%3E%23holder_1662fc57502%20text%20%7B%20fill%3A%23eceeef%3Bfont-weight%3Abold%3Bfont-family%3AArial%2C%20Helvetica%2C%20Open%20Sans%2C%20sans-serif%2C%20monospace%3Bfont-size%3A11pt%20%7D%20%3C%2Fstyle%3E%3C%2Fdefs%3E%3Cg%20id%3D%22holder_1662fc57502%22%3E%3Crect%20width%3D%22208%22%20height%3D%22225%22%20fill%3D%22%2355595c%22%3E%3C%2Frect%3E%3Cg%3E%3Ctext%20x%3D%2266.953125%22%20y%3D%22117.3%22%3EThumbnail%3C%2Ftext%3E%3C%2Fg%3E%3C%2Fg%3E%3C%2Fsvg%3E" data-holder-rendered="true" style="height: 225px; width: 100%; display: block;">
-                                <div class="card-body tituloNot">
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <div class="d-flex justify-content-between align-items-center" style="bottom: 0; position: absolute; font-weight: bolder; font-size: 12pt">
-                                        <small class="text-muted">9 mins</small>
-                                    </div>
-                                </div>
+                    </a>
+                    <a href="#">
+                        <div id="noticia" class="row">
+                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
+                            <div id="escritos">
+                                <span id="data">22/12/2019</span><br/>
+                                <span id="titulo">Titulo da noticia</span>
                             </div>
-                            </a>
                         </div>
-                    </div>
+                    </a>
+                </div>
+                <div id="linha"class="row center">
+                    <a href="#">
+                        <div id="noticia" class="row">
+                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
+                            <div id="escritos">
+                                <span id="data">22/12/2019</span><br/>
+                                <span id="titulo">Titulo da noticia</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div id="noticia" class="row">
+                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
+                            <div id="escritos">
+                                <span id="data">22/12/2019</span><br/>
+                                <span id="titulo">Titulo da noticia</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div id="noticia" class="row">
+                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
+                            <div id="escritos">
+                                <span id="data">22/12/2019</span><br/>
+                                <span id="titulo">Titulo da noticia</span>
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
         
+        <!--
+            PROJETOS DA CARITAS
+        ========================================================================-->
         
-        <!-- START THE FEATURETTES -->
-        
-        <hr class="featurette-divider">
-
-        <div class="row featurette meuparalaxe">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">Somos Solidaridade. Somos Cáritas! <span class="text-muted">Construindo um mundo melhor</span></h2>
-            <p class="lead">A Cáritas atualmente auxilia mais de 100 famílias do município de Diamantina e região com programas e projetos sociais</p>
-          </div>
-          <div class="col-md-5">
-              <img class="featurette-image img-fluid mx-auto" src="img/casa.jpg" data-src="holder.js/500x500/auto" alt="Generic placeholder image" >
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette meuparalaxe">
-          <div class="col-md-7 order-md-2">
-            <h2 class="featurette-heading">Exemplo incompleto <span class="text-muted">exemplo.</span></h2>
-            <p class="lead">.......</p>
-          </div>
-          <div class="col-md-5 order-md-1">
-            <img class="featurette-image img-fluid mx-auto" src="img/imgExemplo.png" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-
-        <div class="row featurette meuparalaxe">
-          <div class="col-md-7">
-            <h2 class="featurette-heading">Trilhamos um longo caminho. <span class="text-muted">Participe desta jornada</span></h2>
-            <p class="lead">Venha nos ajudar a trilhar este caminho. Seja um voluntário da casa em algum dos nosso projetos ou faça uma pequena contribuição à instituição</p>
-          </div>
-          <div class="col-md-5">
-              <img class="featurette-image img-fluid mx-auto" src="img/caminho.jpg" data-src="holder.js/500x500/auto" alt="Generic placeholder image">
-          </div>
-        </div>
-
-        <hr class="featurette-divider">
-        
-        
-        <div class="center">
-            <figure id="container">
-                <img src="img/fundoArvore.jpg" />  
-                <figcaption>Colabore com a Cáritas e vem fazer parte da construção de um novo dia
-                    <center>
-                        <button class="btn btn-lg btn-primary btn-block" type="submit" id="doeAgora">Doe Agora</button>
-                    </center>
-                </figcaption>
-            </figure>
+        <div id="projetos" class="center meuparalaxe row">
+            <span id="titulo">Projetos</span><br/>
+            <div class="row">
+                <a href="pages/projetos/casaCirineu.php"><img src="img/BANNER - CASA DO CIRINEU.jpg"/><br/></a>
+                <a href="pages/projetos/redeMargaridas.php"><img src="img/CARTAZ REDE DAS MARGARIDAS.jpg"/></a>
+            </div>
         </div>
         
+        <!--
+            PORQUE AJUDAR A CARITAS
+        ========================================================================-->
         
+        <section id="why_us" class="about">
+            <div class="container text-center">
+                <div class="row center" style="padding-left: 10%; padding-right: 10%">
+                    <div class="col-md-12">
+                        <div style="width: 100%;">
+                            <h2>Princípios e metas</h2>
+                            <p>A Cáritas é uma instituição sem fins lucratívos, de caráter filantrópico e de assistência social.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-group"></span>
+                            <h4>+200 famílias</h4>
+                            <p>Nós ajudamos mais de 200 famílias do município de Diamantina e região, nas quais se encontram em situação de vulnerabilidade. O objetivo é ampliar ainda mais estes números</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-child"></span>
+                            <h4>As crianças são o futuro</h4>
+                            <p>A instituição conta com projetos que visam um apoio a criança e adolescente em seu desenvolvimento social, cultural e religioso.</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-heart-o"></span>
+                            <h4>Promoção da Fé</h4>
+                            <p>Como uma das missões intituicionais, a promoção do Evangelho de Jesus Cristo</p>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="why_us_item">
+                            <span class="fa fa-newspaper-o"></span>
+                            <h4>Novos Projetos</h4>
+                            <p>A Cáritas esta sempre em busca de novos projetos viáveis, que visem o amparo de pessoas em situações precárias</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
         
+        <!--
+            COLABORE
+        ========================================================================-->
+
+        <section id="colaborar" class="meuparalaxe center">
+            <span class="titulo">Colabore</span>
+            <br/><br/><br/><br/><br/>
+            Faça uma peguena colaboração a nossa causa
+            <br/><br/><br/><br/><br/>
+            <div id="imgsColabore" class="row center">
+                <img src="img/doar.png"/>
+                <div>
+                    <br/><br/><br/>
+                    <a href="">COLABORAR</a>
+                </div>
+                <img src="img/doar.png"/>
+            </div>
+        </section>
+
+        <!--
+            SE INSCREVA
+        ========================================================================-->
         
-        
-        <!-- INDEFINIDO POR ENQUANTO
-        =========================================================================================-->
-<!--
-        <div class="wrapper row3">
-            <main class="hoc container clear"> 
-                <!-- main body -->
-                <!-- ################################################################################################ 
-                
-                <ul class="nospace services">
-                    <li></li>
-                    <li class="one_third first">
-                        <article class="bgded overlay" style="background-image:url('images/demo/320x340.png');">
-                            <div class="txtwrap"><i class="block fa fa-4x fa-jsfiddle"></i>
-                                <h6 class="heading">Venenatis</h6>
-                                <p>Pharetra sed felis vivamus in nulla varius mauris vitae semper justo […]</p>
-                                <footer><a href="#">More »</a></footer>
+        <section id="signup" class="signup-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-lg-8 mx-auto text-center">
+                        <img src="img/logoCaritas.png" style="width: 25%;"/>
+                        <br/>
+                        <h2 class="text-white mb-5" style="font-size: 30pt;">Cadastre-se</h2>
+
+                        <form method="post" action="php/cadastrarUser.php" class="form-inline" style="text-transform: none;">
+                            <input type="text" name="nome" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="NOME..." style="text-transform: none;">
+                            <br/>
+                            <input type="email" name="email" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="EMAIL..." style="text-transform: none;">
+                            <br/>
+                            <input type="tel" name="telefone" class="form-control flex-fill mr-0 mr-sm-2 mb-3 mb-sm-0" id="inputEmail" placeholder="TELEFONE..." style="text-transform: none;">
+                            <br/><br/>
+                            <button type="submit" class="btn btn-primary mx-auto">CADASTRAR</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--
+            ENDEREÇO E DADOS PARA CONTATO
+        ========================================================================-->
+
+        <section id="dadoscontato" class="contact-section bg-black">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <img src="img/icon/address.png"/>
+                                <h4 class="text-uppercase" style="font-size: 16pt;">Endereço</h4>
+                                <hr class="my-4">
+                                <div class="small text-black-50">Praça Dom Joaquin, 16 - Centro<br/>Diamantina, MG</div>
                             </div>
-                        </article>
-                    </li>
-                    <li class="one_third">
-                        <article class="bgded overlay" style="background-image:url('images/demo/320x340.png');">
-                            <div class="txtwrap"><i class="block fa fa-4x fa-language"></i>
-                                <h6 class="heading">Sollicitudin</h6>
-                                <p>Elementum interdum odio morbi quam turpis tincidunt in ipsum commodo […]</p>
-                                <footer><a href="#">More »</a></footer>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <img src="img/icon/email.jpg"/>
+                                <h4 class="text-uppercase m-0" style="font-size: 16pt;">Email</h4>
+                                <hr class="my-4">
+                                <div class="small text-black-50">
+                                    <a href="#">caritasarquidiamantina@yahoo.com.br</a>
+                                </div>
                             </div>
-                        </article>
-                    </li>
-                    <li class="one_third">
-                        <article class="bgded overlay" style="background-image:url('images/demo/320x340.png');">
-                            <div class="txtwrap"><i class="block fa fa-4x fa-lastfm"></i>
-                                <h6 class="heading">Vestibulum</h6>
-                                <p>Scelerisque odio praesent a purus vel nulla semper interdum ut eget […]</p>
-                                <footer><a href="#">More »</a></footer>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 mb-3 mb-md-0">
+                        <div class="card py-4 h-100">
+                            <div class="card-body text-center">
+                                <img src="img/icon/phone.png"/>
+                                <h4 class="text-uppercase m-0" style="font-size: 16pt;">Telefone</h4>
+                                <hr class="my-4">
+                                <div class="small text-black-50">(38) 3531-3583</div>
                             </div>
-                        </article>
-                    </li>
-                </ul>
-                <!-- ################################################################################################ 
-                <!-- / main body 
-                <div class="clear"></div>
-            </main>
-        </div>
-        
-        <!-- PARCEIROS
+                        </div>
+                    </div>
+                </div>
+
+                <div class="social d-flex justify-content-center">
+                    <a href="#" class="mx-2">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a href="#" class="mx-2">
+                        <i class="fa fa-facebook-f"></i>
+                    </a>
+                    <a href="#" class="mx-2">
+                        <i class="fa fa-github"></i>
+                    </a>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- CONTATE-NOS
         ================================================================================================-->
-        
-        <div class="wrapper bgded overlay" style="background-image:url('images/demo/backgrounds/04.png');">
-            <section class="hoc container clear"> 
-                <center><h1>Parceiros</h1></center>
-                <!-- ################################################################################################ -->
-                <ul class="nospace group center">
-                    <li class="one_quarter first">
-                        <h6 class="heading font-x3">Our Clients</h6>
-                    </li>
-                    <li class="one_quarter"><i class="block btmspace-10 fa fa-4x fa-recycle"></i> Venenatis</li>
-                    <li class="one_quarter"><i class="block btmspace-10 fa fa-4x fa-rebel"></i> Malesuada</li>
-                    <li class="one_quarter"><i class="block btmspace-10 fa fa-4x fa-connectdevelop"></i> Fermentum</li>
-                </ul>
-                <!-- ################################################################################################ -->
-            </section>
-        </div>
+
+        <section id="contatenos">
+            <hr><br/>
+            <div class="center">
+                <span id="titulo">CONTATE-NOS</span><br/><br/>
+                Envie-nos uma mensagem sobre o que você desejar. <br/>
+                Faça uma pergunta, uma critica, uma análise ou deixei a sua opinião sobre o site ou a Cáritas.
+                <form method="post" action="php/recebeMsm.php">
+                    <div class="row">
+                        <input type="text" name="nome" placeholder="Nome">
+                        <input type="text" name="sobNome" class="direita" placeholder="Sobre Nome">
+                    </div>
+                    <div class="row">
+                        <input class="completar" type="email" name="email" placeholder="Email">
+                        <textarea class="completar" name="msm" rows="4" placeholder="Escreva aqui uma mensagem.."></textarea>
+                        <input class="completar" id="enviar" type="submit" style="display: none"><br/>
+                        <label for="enviar" class="btn btn-primary">Enviar</label>
+                    </div>
+                </form>
+            </div>
+            <br/><hr>
+        </section>
         
         <?php include './HTMLS/rodape.html';?>
     </body>

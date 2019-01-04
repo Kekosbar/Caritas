@@ -20,15 +20,6 @@
     </div>
     <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
-    <div class="wrapper row1">
-        <!--
-        <div>
-            <img src="/./Caritas/img/caritasFundo.jpg"/>
-        </div>
-        -->
-    </div>
-    <!-- ################################################################################################ -->
-    <!-- ################################################################################################ -->
     <!-- ################################################################################################ -->
     <div id="cabecalhoMenu">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -50,8 +41,8 @@
                         Projetos
                     </a>
                     <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Casa do Cirineu</a>
-                        <a class="dropdown-item" href="#">Rede das Margaridas</a>
+                        <a class="dropdown-item" href="/./Caritas/pages/projetos/casaCirineu.php">Casa do Cirineu</a>
+                        <a class="dropdown-item" href="/./Caritas/pages/projetos/redeMargaridas.php">Rede das Margaridas</a>
                         <a class="dropdown-item" href="#">Economia Popular Solidárioa - EPS</a>
                         <a class="dropdown-item" href="#">Programa Infância Adolecencia e Juventude</a>
                         <a class="dropdown-item" href="#">Fortalecimento da Rede Cáritas</a>
@@ -61,25 +52,14 @@
                     <a id="linkTopo" class="nav-link" href="#">Biblioteca</a>
                 </li>
                 <li class="nav-item active">
-                    <a id="linkTopo" class="nav-link" href="#">Link</a>
-                </li>
-                <li class="nav-item dropdown active">
-                    <a id="linkTopo" class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Paroquias
-                    </a>
-                    <div class="dropdown-menu active" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">SBJ</a>
-                        <a class="dropdown-item" href="#">SCJ</a>
-                        <a class="dropdown-item" href="#">SAS</a>
-                        <a class="dropdown-item" href="#">DPE</a>
-                    </div>
+                    <a id="linkTopo" class="nav-link" href="#">Boletim Eletrônico</a>
                 </li>
                 <li id="doeaqui" class="nav-item active">
                     <a class="nav-link" href="#">Colabore</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" aria-label="Search">
+            <form class="form-inline my-2 my-lg-0" action="/./Caritas/pages/pesquisa.php" method="GET">
+                <input class="form-control mr-sm-2" type="search" name="pesquisa" placeholder="Pesquisar" aria-label="Search">
                 <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Pesquisar</button>
             </form>
         </div>

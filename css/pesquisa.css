@@ -1,0 +1,39 @@
+body{
+    background-color: #f1f0e3;
+    color: black;
+}
+
+
+div#corpo{
+    background-color: white;
+    padding: 50px;
+    margin-top: 50px;
+    min-height: 300px;
+}
+
+div#tituloData{
+    padding: 20px;
+}
+
+span#titulo{
+    font-weight: bold;
+    font-size: 20pt;
+    top: 25px; 
+}
+
+@media (min-width: 992px) {
+    img#imgLista{
+        width: 100px;
+        height: 70px;
+    }
+}
+
+img#imgLista{
+    width: 200px;
+    height: 140px;
+}
+
+span#resultNegativo{
+    font-size: 25pt;
+    color: #6f6f6f;
+}

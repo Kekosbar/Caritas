@@ -13,7 +13,7 @@
             <!-- Area Chart Example-->
             <div class="card mb-3">
                 <div id="one" class="card-header divRadButton">
-                    <a href="#one">
+                    <a>
                         <input id="notRadPrin" type="radio" name="categoria" value="1" <?php if($categoria == 1) echo 'checked'; ?>>
                         <label for="notRadPrin">Noticias Principal</label>
                     </a>
@@ -36,7 +36,7 @@
                 </div>
                 <!-- ====================================================================================-->
                 <div id="two" class="card-header divRadButton">
-                    <a href="#two">
+                    <a>
                         <input id="notRadSec" type="radio" name="categoria" alt="vazio" value="2" <?php if($categoria == 2) echo 'checked'; ?>>
                         <label for="notRadSec">Noticias Secundária</label>
                     </a>
@@ -77,7 +77,7 @@
                 </div>
                 <!-- ====================================================================================-->
                 <div id="three" class="card-header divRadButton">
-                    <a href="#three">
+                    <a>
                         <input id="notRadTer" type="radio" name="categoria" value="3" <?php if($categoria == 3) echo 'checked'; ?>>
                         <label for="notRadTer">Noticias Terciária</label>
                     </a>
@@ -85,10 +85,24 @@
                 <div class="card-body row">
                     Uma notícia de menor expressão em relação aos grupos anteriores
                 </div>
+                <!-- ====================================================================================-->
+                <div id="three" class="card-header divRadButton">
+                    <a>
+                        <input id="notRadCarrosel" type="radio" name="categoria" value="4" <?php if($categoria == 4) echo 'checked'; ?>>
+                        <label for="notRadCarrosel">Noticias Carrosel</label>
+                    </a>
+                </div>
+                <div class="card-body center row">
+                    <img src="../../img/carrosel.png" style="width: 50%; height: 200px"/>
+                    <div style="margin-left: 10px;">
+                        <input id="tituloEx" type="checkbox" name="tituloEx" checked>
+                        <label for="tituloEx">Exibir titulo no carrosel</label>
+                        <br/>
+                        <input id="subtituloEx" type="checkbox" name="subtituloEx" checked>
+                        <label for="subtituloEx">Exibir sub-titulo no carrosel</label>
+                    </div>
+                </div>
             </div>
-            
-            
-            
         </div>
     </div>
 </div>
