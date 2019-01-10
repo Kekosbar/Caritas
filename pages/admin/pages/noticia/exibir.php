@@ -45,7 +45,7 @@ if ($_GET['fn'] == "deletar"){
   <body id="page-top">
 
       <!-- Nav -->
-      <?php include '../../Arquivos/nav.html';?>
+      <?php include '../../Arquivos/nav.php';?>
 
     <div id="wrapper">
 
@@ -195,7 +195,7 @@ if ($_GET['fn'] == "deletar"){
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Your Website 2018</span>
+              <span>Copyright © Cáritas Arquidiocesana de Diamantina 2019</span>
             </div>
           </div>
         </footer>

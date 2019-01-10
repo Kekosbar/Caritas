@@ -49,7 +49,7 @@
                     </div>
                 </li>
                 <li class="nav-item active">
-                    <a id="linkTopo" class="nav-link" href="#">Biblioteca</a>
+                    <a id="linkTopo" class="nav-link" href="/./Caritas/pages/biblioteca.php">Biblioteca</a>
                 </li>
                 <li class="nav-item active">
                     <a id="linkTopo" class="nav-link" href="#">Boletim Eletrônico</a>

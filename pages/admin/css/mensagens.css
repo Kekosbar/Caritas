@@ -1,0 +1,72 @@
+.speech-bubble {
+	position: relative;
+	background: #aeb3b3;
+	border-radius: .4em;
+        padding: 10px;
+        max-width: 70%;
+}
+
+.speech-bubble:after {
+	content: '';
+	position: absolute;
+	left: 0;
+	top: 50%;
+	width: 0;
+	height: 0;
+	border: 20px solid transparent;
+	border-right-color: #aeb3b3;
+	border-left: 0;
+	border-bottom: 0;
+	margin-top: -10px;
+	margin-left: -20px;
+}
+
+div#corpo{
+    padding: 10px;
+}
+
+div#dadosUser{
+    width: 20%;
+    border: solid #4e4e4e 2px;
+    padding: 5px;
+    margin-right: 10px;
+}
+
+div#dadosUser img#usuario{
+    width: 50px;
+    height: 50px;
+}
+
+span#data{
+    float: right;
+    font-size: 11pt;
+    color: #4e4e4e;
+}
+
+img#deletar{
+    width: 40px;
+    height: 40px;
+}
+
+div#texto{
+    position: relative;
+}
+
+div#texto > a{
+    position: absolute; right: 5px; bottom: 5px;
+}
+
+span#vazio{
+    font-size: 35pt;
+}
+
+a#botaoDeleteTudo{
+    width: 200px;
+    font-size: 14pt;
+    font-weight: bold;
+}
+
+a#botaoDeleteTudo img{
+    float: right;
+    height: 28px;
+}

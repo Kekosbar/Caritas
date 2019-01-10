@@ -63,7 +63,7 @@ while ($row = $result->fetch_assoc()){
   <body id="page-top">
 
       <!-- NAV -->
-      <?php include './Arquivos/nav.html'; ?>
+      <?php include './Arquivos/nav.php'; ?>
     <div id="wrapper">
 
       <!-- Sidebar -->

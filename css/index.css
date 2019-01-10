@@ -109,6 +109,14 @@ min-width: 80%;
 border: 1px solid black;
 }
 
+form#usuarioCad{
+    padding: 30px; 
+    background-color: #fe3333; 
+    color: white;
+    max-width: 100%;
+}
+
+
 .meuparalaxe { 
     /* The image used */
     background-image: url("../img/fundo2.jpg");
@@ -180,16 +188,26 @@ div#notTerciaria #data{
 ===========================================*/
 
 div#projetos{
-    padding: 40px;
     padding-top: 80px;
     padding-bottom: 160px;
     background-color: #746ee0;
     height: 100%;
+    width: 100%;
+    margin-right: 500px;
+}
+
+div#projetos div{
+    width: 100%;
 }
 
 div#projetos img{
     margin-top: 120px;
-    width: 40%;
+    width: 45%;
+    height: 45%;
+}
+
+div#projetos a{
+    width: 500%;
 }
 
 div#projetos span#titulo{
@@ -220,6 +238,8 @@ section#colaborar{
     font-weight: bolder;
     height: 100%;
     width: 100%;
+    justify-content: center;
+        align-items: center;
 }
 
 section#colaborar span{
@@ -240,6 +260,7 @@ section#colaborar a{
     font-weight: bolder;
     border: solid #5a5db1 5px;
     transition: 0.5s;
+    margin-left: 25%;
 }
 
 section#colaborar a:hover{
@@ -323,14 +344,13 @@ section#contatenos form label{
     margin-top: 30px;
     font-size: 14pt;
     font-weight: bolder;
-    margin-left: 40%;
+    width: 100%;
 }
 
 @media (min-width: 992px) {
  
     section#contatenos form{
         width: 600px;
-        margin-left: 29%;
         padding: 0;
     }
     

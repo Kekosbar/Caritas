@@ -153,7 +153,7 @@ function sair(){
   <body id="page-top">
 
       <!-- Nav -->
-      <?php include '../../Arquivos/nav.html';?>
+      <?php include '../../Arquivos/nav.php';?>
 
     <div id="wrapper">
 

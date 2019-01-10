@@ -76,6 +76,11 @@ class BDconnect {
         return $this->conn->query($query);
     }
     
+    function addArquivo($arquivo, $nome){
+        $query = "INSERT INTO Arquivos (arq, nome) VALUES ('$arquivo', '$nome');";
+        return $this->conn->query($query);
+    }
+    
     //  UPDATE
     //==============================================================================
     
@@ -93,8 +98,10 @@ class BDconnect {
         $foto = $noticia->getFoto();
         $texto = $noticia->getTexto();
         $categoria = $noticia->getCategoria();
+        $exibetitulo = $noticia->getExibeTitulo();
+        $exibesubtitulo = $noticia->getExibesubtitulo();
         $query = "UPDATE Noticia SET titulo = '$titulo', subTitulo = '$subTitulo', autor = '$autor', local = '$local', foto = '$foto', "
-                            . "texto = '$texto', categoria = $categoria WHERE id = $id;";
+                            . "texto = '$texto', categoria = $categoria, exibeTitulo = $exibetitulo, EXIBEsUBTITULO = $exibesubtitulo WHERE id = $id;";
         return $this->conn->query($query);
     }
     
@@ -175,6 +182,28 @@ class BDconnect {
         return $this->conn->query($query);
     }
     
+    function getArquivos(){
+        $query = "SELECT id, nome, arq FROM Arquivos";
+        return $this->conn->query($query);
+    }
+    
+    function getArquivosTestes(){
+        $query = "SELECT arq FROM Arquivos";
+        return $this->conn->query($query);
+    }
+    
+    function getMensagens(){
+        $query = "SELECT * FROM Mensagens;";
+        return $this->conn->query($query);
+    }
+    
+    function getTotalMsmNLidas(){
+        $query = "SELECT count(id) AS total FROM Mensagens WHERE lida = 0;";
+        $result = $this->conn->query($query);
+        $row = $result->fetch_assoc();
+        return $row["total"];
+    }
+    
     //  DELETE FROM
     //=================================================================================
     
@@ -185,6 +214,16 @@ class BDconnect {
     
     function deletarUserAdmin($id){
         $query = "DELETE FROM userAdmin WHERE id = $id";
+        return $this->conn->query($query);
+    }
+    
+    function deletarMensagem($id){
+        $query = "DELETE FROM Mensagens WHERE id = $id;";
+        return $this->conn->query($query);
+    }
+    
+    function deletarTodasMensagem(){
+        $query = "TRUNCATE Mensagens;";
         return $this->conn->query($query);
     }
     

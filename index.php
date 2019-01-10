@@ -148,7 +148,7 @@ $bd->addVisita();
                 </figure>
 
                 <div style="display: inline-block; padding: 20px; width: 400px; vertical-align: central">
-                    <form style="padding: 30px; background-color: #fe3333; color: white;" method="post" action="php/cadastrarUser.php">
+                    <form id="usuarioCad" method="post" action="php/cadastrarUser.php">
                         Cadastre o seu email e receba as mais novas notícias sobre a Cáritas
                         <div class="form-group">
                             <label for="exampleInputEmail1" style="font-weight: bold; text-align: left">Nome</label>
@@ -210,63 +210,55 @@ $bd->addVisita();
             </div>
             <!-- =================================================================================================================-->
             <div id="notTerciaria" class="center">
+                <?php
+                    $result = $bd->getNoticias(3);
+                    if($result != null){
+                        while($row = $result->fetch_assoc()){
+                            $linhas[] = $row;
+                        }
+                    }
+                ?>
                 <div id="linha" class="row center">
-                    <a href="#">
-                        <div id="noticia" class="row">
-                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
-                            <div id="escritos">
-                                <span id="data">22/12/2019</span><br/>
-                                <span id="titulo">Titulo da noticia</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div id="noticia" class="row">
-                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
-                            <div id="escritos">
-                                <span id="data">22/12/2019</span><br/>
-                                <span id="titulo">Titulo da noticia</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div id="noticia" class="row">
-                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
-                            <div id="escritos">
-                                <span id="data">22/12/2019</span><br/>
-                                <span id="titulo">Titulo da noticia</span>
-                            </div>
-                        </div>
-                    </a>
+                    <?php
+                        if($result != null){
+                            for($i = 0; $i < 2 && $linhas[$i] != null; $i++){
+                                $id = $linhas[$i]["id"];
+                                $titulo = $linhas[$i]["titulo"];
+                                $foto = $linhas[$i]["foto"];
+                                $data = $linhas[$i]["data"];
+                                echo '<a href="pages/noticia.php?idNoticia='.$id.'">
+                                        <div id="noticia" class="row">
+                                            <img src="data:image;base64,'.$foto.'">
+                                            <div id="escritos">
+                                                <span id="data">'.$data.'</span><br/>
+                                                <span id="titulo">'.$titulo.'</span>
+                                            </div>
+                                        </div>
+                                    </a>';
+                            }
+                        }
+                    ?>
                 </div>
                 <div id="linha"class="row center">
-                    <a href="#">
-                        <div id="noticia" class="row">
-                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
-                            <div id="escritos">
-                                <span id="data">22/12/2019</span><br/>
-                                <span id="titulo">Titulo da noticia</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div id="noticia" class="row">
-                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
-                            <div id="escritos">
-                                <span id="data">22/12/2019</span><br/>
-                                <span id="titulo">Titulo da noticia</span>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div id="noticia" class="row">
-                            <img src="img/noticias/IMG-20180506-WA0006.jpg">
-                            <div id="escritos">
-                                <span id="data">22/12/2019</span><br/>
-                                <span id="titulo">Titulo da noticia</span>
-                            </div>
-                        </div>
-                    </a>
+                    <?php
+                        if($result != null){
+                            for($i = 2; $i < 4 && $linhas[$i] != null; $i++){
+                                $id = $linhas[$i]["id"];
+                                $titulo = $linhas[$i]["titulo"];
+                                $foto = $linhas[$i]["foto"];
+                                $data = $linhas[$i]["data"];
+                                echo '<a href="pages/noticia.php?idNoticia='.$id.'">
+                                        <div id="noticia" class="row">
+                                            <img src="data:image;base64,'.$foto.'">
+                                            <div id="escritos">
+                                                <span id="data">'.$data.'</span><br/>
+                                                <span id="titulo">'.$titulo.'</span>
+                                            </div>
+                                        </div>
+                                    </a>';
+                            }
+                        }
+                    ?>
                 </div>
             </div>
         </div>
@@ -275,11 +267,13 @@ $bd->addVisita();
             PROJETOS DA CARITAS
         ========================================================================-->
         
-        <div id="projetos" class="center meuparalaxe row">
+        <div id="projetos" class=" meuparalaxe ">
             <span id="titulo">Projetos</span><br/>
-            <div class="row">
-                <a href="pages/projetos/casaCirineu.php"><img src="img/BANNER - CASA DO CIRINEU.jpg"/><br/></a>
-                <a href="pages/projetos/redeMargaridas.php"><img src="img/CARTAZ REDE DAS MARGARIDAS.jpg"/></a>
+            <div>
+                <center>
+                    <a href="pages/projetos/casaCirineu.php"><img src="img/BANNER - CASA DO CIRINEU.jpg"/></a>
+                    <a href="pages/projetos/redeMargaridas.php"><img src="img/CARTAZ REDE DAS MARGARIDAS.jpg"/></a>
+                </center>
             </div>
         </div>
         
@@ -446,6 +440,7 @@ $bd->addVisita();
                 <span id="titulo">CONTATE-NOS</span><br/><br/>
                 Envie-nos uma mensagem sobre o que você desejar. <br/>
                 Faça uma pergunta, uma critica, uma análise ou deixei a sua opinião sobre o site ou a Cáritas.
+                <center>
                 <form method="post" action="php/recebeMsm.php">
                     <div class="row">
                         <input type="text" name="nome" placeholder="Nome">
@@ -458,6 +453,7 @@ $bd->addVisita();
                         <label for="enviar" class="btn btn-primary">Enviar</label>
                     </div>
                 </form>
+                </center>
             </div>
             <br/><hr>
         </section>
