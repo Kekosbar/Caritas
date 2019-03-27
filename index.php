@@ -58,7 +58,7 @@ $bd->addVisita();
                             <h3>Caritas Arquidiocesana de Diamantina</h3>
                             <p>A Caritas Arquidiocesana de Diamantina (CAD), fundada em 1998 é uma entidade civil de direito privado, sem fins lucrativos, de duração indeterminada, de caráter filantrópico e de assistência social, com sede no município de Diamantina</p>
                             <p>Atualmente, a Caritas atua com diversos projetos sociais que auxiliam <span id="impacto">+200 famílias</span> em torno de 34 municípios e região.</p>
-                            <a class="btn know_btn">Quem Somos</a>
+                            <a class="btn know_btn" href="pages/quemSomos.php">Quem Somos</a>
                         </div>
                     </div>
                 </div>
@@ -137,6 +137,10 @@ $bd->addVisita();
                         $local = $row["local"];
                     }
                 ?>
+                <div style="padding: 30px; background-color: #bdbdbd; font-size: 15pt">
+                    <span style="font-size: 20pt">Sem notícias</span>
+                    <br><br>Não há notícias no momento
+                </div>
                 <figure class="noticiaPrincipal" style="display: inline-block; ">
                     <a href="<?php echo 'pages/noticia.php?idNoticia='.$id;?>">
                         <img src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>" style="width: 800px;">
@@ -179,8 +183,8 @@ $bd->addVisita();
                     $local = $row["local"];
                 }
             ?>
-            <div class="center" style="border-top: solid #a70202 4px; padding-top: 20px; background-color: #cbcbcb; width: 100%;  padding-bottom: 20px">
-                <figure class="noticiaPrincipal">
+            <div class="center" style="border-top: solid #a70202 4px; padding-top: 20px; background-color: #cbcbcb; width: 100%;  padding-bottom: 20px; <?php if($result==null) echo 'display: none'; ?>">
+                <figure class="noticiaPrincipal" style="<?php if($result == null) echo 'display: none;';?>">
                     <a href="<?php echo 'pages/noticia.php?idNoticia='.$id;?>">
                         <img src="<?php if($result != null) echo 'data:image;base64,'.$foto;?>" style="width: 580px; height: 400px">
                         <figcaption style="font-size: 22pt;">
@@ -190,15 +194,17 @@ $bd->addVisita();
                     </a>
                 </figure>
                 <?php
-                    if($row = $result->fetch_assoc()){
-                        $id = $row["id"];
-                        $titulo = $row["titulo"];
-                        $foto = $row["foto"];
-                        $data = $row["data"];
-                        $local = $row["local"];
+                    if($result != null){
+                        if($row = $result->fetch_assoc()){
+                            $id = $row["id"];
+                            $titulo = $row["titulo"];
+                            $foto = $row["foto"];
+                            $data = $row["data"];
+                            $local = $row["local"];
+                        }
                     }
                 ?>
-                <figure class="noticiaPrincipal">
+                <figure class="noticiaPrincipal" style="<?php if($result == null) echo 'display: none;';?>">
                     <a href="<?php echo 'pages/noticia.php?idNoticia='.$id;?>">
                         <img src="<?php if($row != null) echo 'data:image;base64,'.$foto;?>" style="width: 580px; height: 400px">
                         <figcaption style="font-size: 22pt;">
@@ -209,9 +215,11 @@ $bd->addVisita();
                 </figure>
             </div>
             <!-- =================================================================================================================-->
-            <div id="notTerciaria" class="center">
+            <?php
+                $result = $bd->getNoticias(3);
+            ?>
+            <div id="notTerciaria" class="center" style="<?php if($result==null) echo 'display: none'; ?>">
                 <?php
-                    $result = $bd->getNoticias(3);
                     if($result != null){
                         while($row = $result->fetch_assoc()){
                             $linhas[] = $row;
@@ -271,9 +279,13 @@ $bd->addVisita();
             <span id="titulo">Projetos</span><br/>
             <div>
                 <center>
-                    <a href="pages/projetos/casaCirineu.php"><img src="img/BANNER - CASA DO CIRINEU.jpg"/></a>
+                    <a href="pages/projetos/casaCirineu.php"><img src="img/BANNER - CASA DO CIRINEU.jpg" /></a>
                     <a href="pages/projetos/redeMargaridas.php"><img src="img/CARTAZ REDE DAS MARGARIDAS.jpg"/></a>
                 </center>
+            </div>
+            <br><br>
+            <div class="center">
+                <span style="font-size: 12pt; font-weight: bolder;">Confira outros projetos clicando na seção Projetos no menu superior da tela</span>
             </div>
         </div>
         

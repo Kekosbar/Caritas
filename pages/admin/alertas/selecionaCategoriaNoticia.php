@@ -61,10 +61,12 @@
                     </div>
                     <?php
                         $id_x = -2;
-                        if($row_x = $result_d->fetch_assoc()){
-                            $id_x = $row_x["id"];
-                            $titulo_x = $row_x["titulo"];
-                            $foto_x = $row_x["foto"];
+                        if($result_d != null){
+                            if($row_x = $result_d->fetch_assoc()){
+                                $id_x = $row_x["id"];
+                                $titulo_x = $row_x["titulo"];
+                                $foto_x = $row_x["foto"];
+                            }
                         }
                     ?>
                     <div id="noticia">

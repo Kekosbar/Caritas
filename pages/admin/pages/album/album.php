@@ -1,5 +1,5 @@
-<?php
-include '../../Arquivos/verificaLogin.php';
+<?php 
+include './Arquivos/verificaLogin.php';
 
 require_once '../../../../php/classes/BDconnect.php';
 $bd = new BDconnect();
@@ -16,7 +16,7 @@ $bd = new BDconnect();
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Caritas - Administrador</title>
+    <title>Administrador - Caritas</title>
 
     <!-- Bootstrap core CSS-->
     <link href="../../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -26,21 +26,19 @@ $bd = new BDconnect();
 
     <!-- Page level plugin CSS-->
     <link href="../../vendor/datatables/dataTables.bootstrap4.css" rel="stylesheet">
-    
 
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin.css" rel="stylesheet">
-    <link href="../../css/novaNoticia.css" rel="stylesheet">
     
     <style>
-        img#pdf{
+        img#foto{
             width: 100px;
         }
         img#deletar{
             width: 40px;
             height: 40px;
         }
-        div#pdf{
+        div#foto{
             width: 150px;
             padding: 4px;
         }
@@ -53,9 +51,8 @@ $bd = new BDconnect();
 
   <body id="page-top">
 
-      <!-- Nav -->
-      <?php include '../../Arquivos/nav.php';?>
-
+      <!-- NAV -->
+      <?php include '../..//Arquivos/nav.php'; ?>
     <div id="wrapper">
 
       <!-- Sidebar -->
@@ -68,11 +65,11 @@ $bd = new BDconnect();
           <!-- Breadcrumbs-->
           <ol class="breadcrumb">
             <li class="breadcrumb-item">
-              <a href="#">Administrador</a>
+              <a href="#">Dashboard</a>
             </li>
-            <li class="breadcrumb-item">Biblioteca</li>
-            <li class="breadcrumb-item active">Arquivos</li>
+            <li class="breadcrumb-item active">Album</li>
           </ol>
+          
 
           <!-- Area Chart Example-->
           <div class="card mb-3">
@@ -81,7 +78,7 @@ $bd = new BDconnect();
               </div>
               <div style="padding: 10px;">
                   <form name="form" method="post" action="salvarArquivo.php" enctype="multipart/form-data">
-                    <input id="arquivo" name="arquivo" type="file" accept="application/pdf" >
+                    <input id="arquivo" name="image" type="file" accept="image/*" >
                     <br/><br/>
                     <label id="lbSubmit" for="submit" class="btLabel">Enviar</label>
                     <input class="none" type="submit" id="submit">
@@ -89,33 +86,29 @@ $bd = new BDconnect();
               </div>
               
               <div class="card-header">
-                  Arquivos anexados no site
+                  Fotos anexadas no album do site
               </div>
               <div id="arquivos" class="row">
                   <?php
-                    $directory = "../../../../uploads/";
-                    $dh  = opendir($directory);
-                    while (false !== ($filename = readdir($dh))) {
-                        $files[] = $filename;
-                    }
-                    sort($files);
-                    $total = count($files);
-                    for ($i=2; $i<$total; $i++){
-                        $nome = $files[$i];
-                        echo '
-                        <div id="pdf">
-                          <center>
-                          <a href="deletarPDF.php?nomePdf='.$nome.'"><img id="deletar" src="../../img/lixoIcon.png"></a>
-                          <a href="'.$directory.$nome.'" download>
-                              <img id="pdf" src="../../img/PDF.jpg"><br/>
-                              '.$nome.'
-                          </a>
-                          
-                          </center>
-                        </div>';
-                    }
+                    $result = $bd->getFotosAlbum();
+                    if($result != null){
+                        while($row = $result->fetch_assoc()){
+                            $imagem = $row["imagem"];
+                            $id = $row["id"];
+                            echo '
+                                <div id="foto">
+                                    <center>
+                                    <a href="deletarFoto.php?id='.$id.'"><img id="deletar" src="../../img/lixoIcon.png"></a>
+                                    <img id="foto" src="data:image;base64,'.$imagem.'">
+                                    </center>
+                                </div>
+                            ';
+                        }
+                    }else
+                        echo 'Resultado = NULL';
                   ?>
               </div>
+              
           </div>
 
 
@@ -126,7 +119,7 @@ $bd = new BDconnect();
         <footer class="sticky-footer">
           <div class="container my-auto">
             <div class="copyright text-center my-auto">
-              <span>Copyright © Cáritas Arquidiocesana de Diamantina 2019</span>
+              <span>Copyright © Cáritas Arquidiocesana de Diamantina</span>
             </div>
           </div>
         </footer>

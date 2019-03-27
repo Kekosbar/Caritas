@@ -12,7 +12,6 @@
                 <ul>
                     <li><a href="#"><i class="fa fa-lg fa-home"></i></a></li>
                     <li><a href="/./Caritas/pages/login.php">Login</a></li>
-                    <li><a href="/./Caritas/pages/cadastro.php">Cadastro</a></li>
                     <li><a href="/./Caritas/pages/admin/">Administrador</a></li>
                 </ul>
             </div>
@@ -23,7 +22,7 @@
     <!-- ################################################################################################ -->
     <div id="cabecalhoMenu">
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a id="linkDoMenu" class="navbar-brand" href="#">Menu</a>
+        <a id="linkDoMenu" class="navbar-brand" href="#"><img style="height: 25px;" src="/./Caritas/img/logoCaritas.png"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -53,6 +52,12 @@
                 </li>
                 <li class="nav-item active">
                     <a id="linkTopo" class="nav-link" href="#">Boletim Eletrônico</a>
+                </li>
+                <li class="nav-item active">
+                    <a id="linkTopo" class="nav-link" href="/./Caritas/pages/album.php">Album</a>
+                </li>
+                <li class="nav-item active">
+                    <a id="linkTopo" class="nav-link" href="http://caritas.org.br/">Cáritas Brasileira</a>
                 </li>
                 <li id="doeaqui" class="nav-item active">
                     <a class="nav-link" href="#">Colabore</a>

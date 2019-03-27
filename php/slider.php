@@ -45,7 +45,7 @@
                             <a href="/./Caritas/pages/quemSomos.php">Quem somos</a>
                         </li>
                         <li>
-                            <a href="#">Biblioteca</a>
+                            <a href="/./Caritas/pages/biblioteca.php">Biblioteca</a>
                         </li>
                     </ul>
                 </div>
@@ -68,14 +68,14 @@
                 <div class="col-lg-6">
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#">Casa do Cirineu</a>
+                            <a href="/./Caritas/pages/projetos/casaCirineu.php">Casa do Cirineu</a>
                         </li>
                     </ul>
                 </div>
                 <div class="col-lg-6">
                     <ul class="list-unstyled mb-0">
                         <li>
-                            <a href="#">Rede das Margaridas</a>
+                            <a href="/./Caritas/pages/projetos/redeMargaridas.php">Rede das Margaridas</a>
                         </li>
                     </ul>
                 </div>

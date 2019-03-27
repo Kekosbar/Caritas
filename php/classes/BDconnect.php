@@ -81,6 +81,11 @@ class BDconnect {
         return $this->conn->query($query);
     }
     
+    function addFotoNoAlbum($imagem){
+        $query = "INSERT INTO Album (imagem) VALUES ('$imagem')";
+        return $this->conn->query($query);
+    }
+    
     //  UPDATE
     //==============================================================================
     
@@ -197,6 +202,11 @@ class BDconnect {
         return $this->conn->query($query);
     }
     
+    function getFotosAlbum(){
+        $query = "SELECT * FROM Album;";
+        return $this->conn->query($query);
+    }
+    
     function getTotalMsmNLidas(){
         $query = "SELECT count(id) AS total FROM Mensagens WHERE lida = 0;";
         $result = $this->conn->query($query);
@@ -219,6 +229,11 @@ class BDconnect {
     
     function deletarMensagem($id){
         $query = "DELETE FROM Mensagens WHERE id = $id;";
+        return $this->conn->query($query);
+    }
+    
+    function deletarFotoAlbum($id){
+        $query = "DELETE FROM Album WHERE id = $id";
         return $this->conn->query($query);
     }
     

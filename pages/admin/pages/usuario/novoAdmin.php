@@ -1,6 +1,9 @@
 <?php
 include '../../Arquivos/verificaLogin.php';
 
+require_once '../../../../php/classes/BDconnect.php';
+$bd = new BDconnect();
+        
 $nome = $login = $data = $cargo = $telefone = $email = $foto = $imagem = $descricao = $senha = $confsenha = "";
 $nomeErr = $loginErr = $dataErr = $cargoErr = $telefoneErr = $emailErr = $fotoErr = $imagemErr = $descricaoErr = $senhaErr = $confsenhaErr = "";
 
@@ -11,12 +14,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     
     if(empty($_POST["login"])) {$loginErr = "ERRO! Insira um login para acessar o site"; $validade = false;}
     else {
-        $login = $_POST["login"];
-        $login = $login + "@login";
+        $login = $_POST["login"] . "@login";
     }
-    
-//    if(empty($_POST["dataNasc"])) {$dataErr = "ERRO! Insira a data de nascimento"; $validade = false;}
-//    else $data = $_POST["dataNasc"];
     
     if(empty($_POST["cargo"])) {$cargoErr = "ERRO! Insira o seu cargo de atuação na Cáritas"; $validade = false;}
     else $cargo = $_POST["cargo"];
@@ -28,7 +27,12 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     else $email = $_POST["email"];
     
     if(empty($_POST["descricao"])) {$descricaoErr = "ERRO! Insira uma breve descrição"; $validade = false;}
-    else $descricao = $_POST["descricao"];
+    else{
+        $descricao = htmlspecialchars($_POST['descricao']);
+        // Abaixo o texto final que deverá ser salvo no BD
+        $descricaoDiv = $_POST['descricao'];
+        $descricaoDiv = str_replace("\n","<br>",$textoDiv);
+    }
     
     if(empty($_POST["senha"])) {$senhaErr = "ERRO! Insira a senha de acesso"; $validade = false;}
     else $senha = $_POST["senha"];
@@ -41,10 +45,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     // Preparar imagem para salvar no BD
-    if (getimagesize($_FILES['image']['tmp_name']) == false){
-        $fotoErr = "ERRO! Selecione uma foto para a capa";
-        $validade = false;
-    }else {
+    if (!getimagesize($_FILES['image']['tmp_name']) == false){
         $imagem = addslashes($_FILES['image']['tmp_name']);
         $name = addslashes($_FILES['image']['name']);
         $imagem = file_get_contents($imagem);
@@ -52,10 +53,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     }
     
     if($validade){
-        require_once '../../../../php/classes/BDconnect.php';
-        $bd = new BDconnect();
         require_once '../../../../php/classes/UserAdmin.php';
-        $admin = new UserAdmin(0, $nome, $login, $data, $cargo, $telefone, $email, $imagem, $descricao, md5($senha));
+        $admin = new UserAdmin(0, $nome, $login, $data, $cargo, $telefone, $email, $imagem, $descricaoDiv, md5($senha));
         $resultado = $bd->addUserAdmin($admin);
         if($resultado){
             header("Location: administrador.php");
@@ -63,6 +62,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
         }else{
             echo "<script>alert('Ocorreu um erro ao cadastrar os dados');</script>";
         }
+    }else{
+        $login = str_replace("@login","",$login);
     }
 }
 ?>
@@ -161,7 +162,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                   <input class="form-control" name="email" value="<?php echo "$email" ?>">
               </div>
               <div class="form-group">
-                  <label for='inpImg' class="btLabel">Selecionar uma foto</label><span <?php if($fotoErr != "") {echo 'class="erro">'; echo "$fotoErr";} else echo '>';?></span>
+                  <label for='inpImg' class="btLabel">Selecionar uma foto</label> (Opcional) <span <?php if($fotoErr != "") {echo 'class="erro">'; echo "$fotoErr";} else echo '>';?></span>
                   <input id="inpImg"  name="image" class="none"  type="file" accept="image/*" onchange="mostraFoto()" src="<?php echo $foto; ?>">
               </div>
               <div id="imagem">
